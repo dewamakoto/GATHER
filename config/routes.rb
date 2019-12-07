@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :contacts, only: [:create, :new]
     resources :notifications, only: [:index]
     resources :relationships, only: [:index, :create, :destroy]
+    resources :users, only: [:edit, :update, :show]
 
 
 

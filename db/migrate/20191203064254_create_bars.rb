@@ -3,7 +3,7 @@ class CreateBars < ActiveRecord::Migration[5.2]
     create_table :bars do |t|
       t.integer :post_id
       t.string :name
-      t.string :bar_image
+      t.string :image_id
       t.float :latitude
       t.float :longitude
       t.string :address

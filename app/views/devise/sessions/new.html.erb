@@ -1,26 +1,31 @@
-<h2>Log in</h2>
+<div class="background-image-sign_in">
+  <div class="background-color-top-sign_in">
+    <div class="container">
+      <div class="row">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <h2 class="col s4 offset-s4 sign_in-top">ログイン</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="col s5 offset-s3 field emailfolder">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="col s5 offset-s3 field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+
+
+          <button class="col s3 offset-s4 btn waves-effect waves-light login_button" type="submit" name="action">ログイン</button>
+        <% end %>
+
+        <div class="col s3 offset-s4 login-button-bottom-space">
+                新規登録の方は<%= link_to "こちら", new_user_registration_path  %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
 <%= render "devise/shared/links" %>

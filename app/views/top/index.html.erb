@@ -1,1 +1,23 @@
-index
+<div class="background-image">
+	<div class="background-color-top">
+		<div class="container">
+			<div class="row">
+				<h1 class="title-gather col s4 offset-s4">GATHER</h1>
+				<h5 class="top-text col s12">ようこそGATHERへ！<br>
+					ここではあなたの近くで今スポーツ観戦をしている飲食店を見つけることができます！<br>
+					さあ、あなたもお店を探し、<br>みんなでお酒を飲みながらスポーツ観戦を楽しみましょう！！</h5>
+				<div class="top-button col s2 offset-s5">
+					<%= link_to(new_user_registration_path) do %>
+	        			<a href="/users/sign_up" class="top-button waves-effect waves-light btn-large">新規登録</a>
+	      			<% end %>
+	      			<%= link_to(new_user_session_path) do %>
+	        			<a href="/users/sign_in" class="top-button waves-effect waves-light btn-large">ログイン</a>
+	      			<% end %>
+	      			<%= link_to(new_user_session_path) do %>
+	        			<a href="bars/seach" class="top-button-2 waves-effect waves-light btn-large">登録せずに探す</a>
+	      			<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

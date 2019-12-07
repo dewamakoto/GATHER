@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_070202) do
   create_table "bars", force: :cascade do |t|
     t.integer "post_id"
     t.string "name"
-    t.string "bar_image"
+    t.string "image_id"
     t.float "latitude"
     t.float "longitude"
     t.string "address"

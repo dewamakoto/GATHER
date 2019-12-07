@@ -1,0 +1,56 @@
+<div class="navbar-fixed">
+	<ul id="dropdown1" class="dropdown-content">
+  		<li><a href="/bars/search" class="orange-text text-darken-2">現在地から探す</a></li>
+  		<li><a href="/bars" class="orange-text text-darken-2">検索して探す</a></li>
+  		<li><a href="/bars/new" class="orange-text text-darken-2">店舗新規登録</a></li>
+  		<li><a href="/users/id" class="orange-text text-darken-2">マイページ</a></li>
+  		<li><a href="/comunities" class="orange-text text-darken-2">コミュニティ一覧</a></li>
+  		<li><a href="/relationships" class="orange-text text-darken-2">友達一覧</a></li>
+  		<li><a href="contacts/new" class="orange-text text-darken-2">お問い合わせ</a></li>
+	</ul>
+	<nav>
+	    <div class="nav-wrapper  #ff7043 deep-orange lighten-1">
+	      <!-- アドミンでログインした場合 -->
+	      <% if admin_signed_in? %>
+	        <a class="logo"><img src="assets/logo.png" alt="サンプル"></a>
+		    <a class="gather">GATHER</a>
+		    <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      <li><a><u>管理者様</u></a></li>
+		    </ul>
+		  <!-- エンドユーザーでログインした場合 -->
+	      <% elsif user_signed_in?%>
+	      	  <a href="/bars/search"class="logo"><%= image_tag "logo.png" %></a>
+		      <a href="/bars/search"class="gather">GATHER</a>
+			  <ul id="nav-mobile" class="right hide-on-med-and-down">
+			    <li><a><u><%= current_user.name %>さん</u></a></li>
+			    <li><%= link_to(destroy_user_session_path, method: :delete) do %>
+        			<span class="signout"> サインアウト</span>
+        		<% end %></li>
+			    <li><a id='dropdown-trigger1' class="dropdown-trigger" href="#!" data-target="dropdown1">会員メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
+			  </ul>
+		  <!-- 非ログイン時 -->
+	      <% else %>
+	      <a href="/"class="logo"><%= image_tag "logo.png" %></a>
+	      <a href="/"class="gather">GATHER</a>
+		    <ul id="nav-mobile" class="right hide-on-med-and-down">
+	      		<li><%= link_to(new_user_registration_path) do %>
+	        		<a href="/users/sign_up"class="signup"> 新規登録</a>
+	      		<% end %>
+	      		</li>
+	      		<li><%= link_to(new_user_session_path) do %>
+	        		<a href="/users/sign_in" class="signin"> ログイン</a>
+	      		<% end %>
+	      		</li>
+	      		<li><%= link_to(new_user_session_path) do %>
+	        		<a href="/bars/search"class="signsin"> 現在地から探す</a>
+	      		<% end %>
+	      		</li>
+	      		<li><%= link_to(new_user_session_path) do %>
+	        		<a href="/bars/"class="signin"> 検索して探す</a>
+	      		<% end %>
+	      		</li>
+	      	</ul>
+		  <% end %>
+	    </div>
+	</nav>
+</div>
