@@ -1,0 +1,25 @@
+<div class="background-image-user-show">
+  <div class="background-color-user-show">
+    <div class="container">
+      <div class="row">
+        <div class="col s2">
+          <h5 class="user-title">退会</h5>
+          <div class="border"></div>
+        </div>
+      </div>
+      <div class="row">
+      	<div class="col s8 offset-s3">
+          <h6 class="user-exit-text">・一度退会したお客様の情報を復元することはできません。</h6>
+          <h6 class="user-exit-text">・過去に投稿した内容は削除されず、退会された場合、削除および<br>
+          &emsp; 編集はできなくなります。</h6>
+    	    <div class="col s4 offset-s2 user-exit-exit">
+    	 	    <%= link_to '上記に同意し退会する', user_registration_path, method: :delete, class: "btn btn-danger btn-lg #b71c1c red darken-4" %>
+          </div>
+      	  <div class="col s6 offset-s2 user-exit-show">
+    	 	    <%= link_to '< マイページへ', user_path(current_user.id) %>
+       	  </div>
+        </div>
+    	</div>
+    </div>
+  </div>
+</div>

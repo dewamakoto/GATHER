@@ -111,3 +111,95 @@ main {
   width: 100%;
   height: 1200px;
 }
+
+// ここからUSER
+
+// show
+
+.user-show-post-index{
+  margin-top: 50px;
+  color: white;
+}
+
+.background-image-user-show{
+  background-image: url(sign_up.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+}
+
+.background-color-user-show{
+  background-color: rgba( 0, 0, 0, 0.7);
+  width: 100%;
+  height: 800px;
+}
+
+.user-show-button{
+  margin-top: 100px;
+}
+
+.user-show-contents{
+  margin-top: 100px;
+}
+
+.border{
+  width: 80%;
+  height: 2px;
+  background-color:#dadada;
+  margin: 0 auto;
+}
+
+.user-title{
+  color:white;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.user-show-name{
+  color:white;
+}
+
+.user-show-email{
+  color:white;
+}
+
+
+// edit
+
+
+.user-edit-image{
+  margin-bottom: 70px;
+}
+
+
+// exit
+
+.user-exit-text{
+  color: white;
+  margin-top: 100px;
+}
+
+.user-exit-exit{
+  margin-top: 50px;
+}
+
+.user-exit-show{
+  margin-top: 30px;
+}
+
+// ここから　bars
+
+// search
+
+#map{
+  margin-top: 100px;
+}
+
+.search-bar{
+  margin-top: 200px;
+  height: 20px;
+}
+
+.search-searchbox{
+  margin-top: 25px;
+}

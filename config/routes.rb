@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   devise_for :users
     get 'bars/search' => 'bars#search', as: 'search'
     resources :bars, only: [:index, :create, :new, :show]
-
+    get 'users/:id/exit' => 'users#exit', as: 'exit'
     root to: 'top#index'
     resources :posts, only: [:create, :destroy, :index, :update, :new]
     resources :commnets, only: [:create, :destroy]

@@ -8,12 +8,12 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="col s5 offset-s3 field emailfolder">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"white-text" %>
           </div>
 
           <div class="col s5 offset-s3 field">
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
+            <%= f.password_field :password, autocomplete: "current-password",class:"white-text" %>
           </div>
 
 

@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :comunities,through: :user_comunities
   has_many :posts
 
+  attachment :image
+
 
   # validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true
