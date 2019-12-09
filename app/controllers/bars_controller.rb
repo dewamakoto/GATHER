@@ -1,6 +1,8 @@
 class BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
+    @posts = Post.page(params[:page]).per(3)
+    @posts = Post.where(bar_id: @bar.id)
   end
 
   def new
