@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   		redirect_to bar_path
   	else
   		render "new"
+  	end
   end
 
   def index
@@ -18,4 +19,5 @@ class PostsController < ApplicationController
   private
   def post_params
   	params.require(:post).permit(:image,:sports,:rate,:title,:body)
+  end
 end
