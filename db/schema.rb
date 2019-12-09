@@ -67,12 +67,11 @@ ActiveRecord::Schema.define(version: 2019_12_03_070202) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "bar_id"
+    t.integer "bar_id", null: false
     t.datetime "deleted_at"
-    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_favorites_on_item_id"
+    t.index ["bar_id"], name: "index_favorites_on_bar_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -90,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_070202) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "comment_id"
-    t.string "post_image"
+    t.string "image_id"
     t.string "sports"
     t.float "rate"
     t.string "title"

@@ -203,3 +203,87 @@ main {
 .search-searchbox{
   margin-top: 25px;
 }
+
+// new
+
+.bar-new-box{
+  border: solid 2px #444444;
+  line-height: 25px;
+  border-radius:40px;
+  background-color: #EEEEEE;
+  margin-top: 50px;
+}
+
+.bar-new-image{
+  margin-top: 80px;
+}
+
+.bar-new-name{
+  margin-top: 50px;
+}
+
+.bar-new-registration{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.background-image-bar-new{
+  background-image: url(sign_in.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 1200px;
+}
+
+.background-color-bar-new{
+  background-color: rgba( 0, 0, 0, 0.7);
+  width: 100%;
+  height: 1200px;
+}
+
+
+// index
+
+
+.bar-index-box{
+  background-color: white;
+  border-radius:40px;
+  margin-top: 50px;
+}
+
+.background-image-bar-index{
+  background-image: url(sign_in.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 2400px;
+}
+
+.background-color-bar-index{
+  background-color: rgba( 0, 0, 0, 0.7);
+  width: 100%;
+  height: 2400px;
+}
+
+.bar-index-search{
+  color:white;
+}
+
+// show
+
+.bar-show-box{
+  background-color: #EEEEEE;
+  border-radius:10px;
+  margin-top: 50px;
+}
+
+.bar-show-image{
+  margin:50px 0 50px 60px;
+}
+
+.bar-show-category{
+  margin-top: 50px;
+}
+
+.bar-show-body{
+  margin-top: 50px;
+  margin-bottom:100px;
+}

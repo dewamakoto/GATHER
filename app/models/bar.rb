@@ -6,4 +6,8 @@ class Bar < ApplicationRecord
 
 	validates :name, presence: true
 	validates :address, presence: true
+	validates :category, presence: true
+	validates :sports, presence: true
+
+	attachment :image
 end
