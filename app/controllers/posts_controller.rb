@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   	if @post.save
   		redirect_to bar_path
   	else
+  		puts @post.errors.full_messages 
   		render "new"
   	end
   end
@@ -18,6 +19,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-  	params.require(:post).permit(:image,:sports,:rate,:title,:body)
+  	params.require(:post).permit(:image,:sports,:rate,:title,:body,:user_id,:bar_id)
   end
 end

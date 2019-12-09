@@ -5,6 +5,8 @@ class Post < ApplicationRecord
 	belongs_to :user
 	belongs_to :bar
 
+	attachment :image
+
 	validates :sports, presence: true
 	validates :title, presence: true
 	validates :body, presence: true

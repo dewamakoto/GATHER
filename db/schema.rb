@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_070202) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "comment_id"
+    t.integer "bar_id"
     t.string "image_id"
     t.string "sports"
     t.float "rate"

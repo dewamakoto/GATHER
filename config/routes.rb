@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :bars, only: [:index, :create, :new, :show]
     get 'users/:id/exit' => 'users#exit', as: 'exit'
     root to: 'top#index'
-    resources :posts, only: [:create, :destroy, :index, :update, :new]
+    resources :posts, only: [:destroy, :index, :update]
+    get 'posts/:id/new' => 'posts#new', as: 'new_post'
+    post 'posts/:id' => 'posts#create', as: 'create_post'
     resources :commnets, only: [:create, :destroy]
     resources :comunities, only: [:create, :update, :destroy, :new, :show, :index]
     resources :favorites, only: [:index, :create, :destroy]
