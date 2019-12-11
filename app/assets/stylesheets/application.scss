@@ -267,12 +267,39 @@ main {
   color:white;
 }
 
+
 // show
+
+.blank{
+  margin-bottom:10px;
+}
+
+.delete-content{
+  font-size: 12px;
+}
+
+.bar-show-comment-index{
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.bar-show-box-comment{
+  background-color: #EEEEEE;
+  border-radius:10px;
+  margin-bottom: 10px;
+}
+
 
 .bar-show-box{
   background-color: #EEEEEE;
   border-radius:10px;
+}
+
+.bar-show-box-all{
+  background-color: #EEEEEE;
+  border-radius:10px;
   margin-top: 50px;
+  margin-bottom: 0;
 }
 
 .bar-show-image{
@@ -311,4 +338,74 @@ main {
 
 .bar-show-post-destroy{
   margin-bottom: 20px;
+}
+
+.background-image-bar-show{
+  background-image: url(sign_in.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 2000px;
+}
+
+.background-color-bar-show{
+  background-color: rgba( 0, 0, 0, 0.7);
+  width: 100%;
+  height: 2000px;
+}
+
+.post-title{
+  margin-top: 160px;
+  color:white;
+  text-align: center;
+  font-size: 24px;
+}
+
+// ここからPOSTS
+
+// index
+
+
+.post-index-box-comment{
+  background-color: #EEEEEE;
+  border-radius:10px;
+  margin-bottom: 40px;
+}
+
+.bar-index-box{
+  background-color: #EEEEEE;
+  border-radius:10px;
+  margin-bottom: 20px;
+}
+
+.bar-post-box{
+  background-color: #EEEEEE;
+  border-radius:10px;
+}
+
+.post-index-bar-name{
+  margin-bottom: 20px;
+  color:black;
+}
+
+//  ここからcontact
+
+//   new
+
+.contact-new-text{
+  margin-top:50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.background-image-contact-new{
+  background-image: url(sign_in.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+}
+
+.background-color-contact-new{
+  background-color: rgba( 0, 0, 0, 0.7);
+  width: 100%;
+  height: 800px;
 }

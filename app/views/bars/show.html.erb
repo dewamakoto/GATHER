@@ -1,5 +1,5 @@
-<div class="background-image-bar-new">
-	<div class="background-color-bar-new">
+<div class="background-image-bar-show">
+	<div class="background-color-bar-show">
     	<div class="container">
     		<div class="row">
         		<div class="col s3">
@@ -7,13 +7,16 @@
           			<div class="border"></div>
         		</div>
         		<% if user_signed_in? %>
-      				<div class="col s4 offset-s2 bar-show-post-new">
+      				<div class="col s4 bar-show-post-new">
       					<%= link_to "新規投稿する", new_post_path, class: "btn btn-success mx-auto btsn-lg" %>
       				</div>
       			<% end %>
+      			<div class="col s3">
+          			<div class="post-title">投稿一覧</div>
+        		</div>
       		</div>
       		<div class="row">
-      			<div class="col s4 bar-show-box">
+      			<div class="col s5 bar-show-box">
       				<div class="bar-show-image">
       					<%= attachment_image_tag @bar, :image, :fill, 200, 200, format: 'jpg', fallback: "bar_no_image.png" %>
       				</div>
@@ -30,12 +33,12 @@
       					<h6><b><%= @bar.body %></b></h6>
       				</div>
       			</div>
-      			<div class="col s7 offset-s1">
+      			<div class="col s6 offset-s1">
 
       					<% @posts.each do |post| %>
-      						<div class="col s12 bar-show-box">
+      						<div class="col s12 bar-show-box-all">
       							<div class="col s5 bar-show-user">
-      								<u>ユーザー名</u>：<%= post.user.name %>
+      								<u>投稿者</u>：<%= post.user.name %>
       								<div class="bar-show-post-image">
       									<%= attachment_image_tag post, :image, :fill, 130, 130, format: 'jpg', fallback: "bar_no_image.png" %>
       								</div>
@@ -46,7 +49,7 @@
       									<%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に消しますか？",class:"col s4 offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4" %>
       								</div>
       								<% end %>
-      								<u>投稿日時</u>：<%= post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+      								<u>投稿日時</u>：<%= post.created_at.strftime("%m月%d日 %H時%M分") %>
       								<div class="bar-show-post-title">
       									<u>件名</u>：<%= post.title %>
       								</div>
@@ -54,7 +57,36 @@
       									<u>内容</u>：<%= post.body %>
       								</div>
       							</div>
-      						</div>
+      							</div>
+      							<div class="col s12 bar-show-box-comment">
+      								<div class="border-bar-show"></div>
+	      							<div class="bar-show-comment-index">＜<u>コメント一覧</u>＞</div>
+	      							<% if post.comments.any? %>
+	     							<% post.comments.each do |comment| %>
+	        							<p>
+	            							<storng><u>投稿者</u>：<%= comment.user.name %></strong><br>
+	           								 &emsp;&emsp;&emsp;&emsp;<%= comment.body %>
+	          							</p>
+	          								<% if user_signed_in? && comment.user == current_user %>
+        										<div class="delete-content"><%= link_to '削除する', comment_path(comment), method: :delete %></div>
+      										<% end %>
+	      							<% end %>
+	      							<% else %>
+	      							<div>まだコメントはありません</div>
+	      							<% end %>
+	      							<div class="blank"></div>
+	    						</div>
+	    					<div class="col s12 bar-show-box">
+	    						<% if user_signed_in? %>
+	    						<div>コメントを投稿する</div>
+	      							<%= form_for(@comment, url: comments_path(params[:id])) do |f| %>
+	      								<%= f.hidden_field :post_id,value:post.id %>
+	      								<%= f.hidden_field :bar_id,value:@bar.id %>
+										<%= f.text_field :body, class: "col s6 form-control form-control-lg w-100" %>
+										<%= f.submit "投稿", class:"col-xs-4 col-xs-offset-4 btn btn-small" %>
+	      							<% end %>
+	    						<% end %>
+	    					</div>
       					<% end %>
       			</div>
 	    	</div>

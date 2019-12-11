@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:destroy, :index, :update]
     get 'posts/:id/new' => 'posts#new', as: 'new_post'
     post 'posts/:id' => 'posts#create', as: 'create_post'
-    resources :commnets, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resources :comunities, only: [:create, :update, :destroy, :new, :show, :index]
     resources :favorites, only: [:index, :create, :destroy]
     resources :contacts, only: [:create, :new]
