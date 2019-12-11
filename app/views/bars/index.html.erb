@@ -3,13 +3,13 @@
     	<div class="container">
     		<div class="row">
         		<div class="col s3">
-          			<h5 class="user-title">検索して探す</h5>
+          			<h5 class="user-title">店名検索</h5>
           			<div class="border"></div>
         		</div>
       		</div>
       		<div class="row">
 	      		<%= search_form_for @search do |f| %>
-	  				<%= f.search_field :name_or_category_cont, class:"col s4 offset-s4 bar-index-search", placeholder: '店名またはジャンルを入力' %>
+	  				<%= f.search_field :name_or_address_cont, class:"col s4 offset-s4 bar-index-search", placeholder: '店名または住所を入力' %>
 					<%= f.submit ' 検索する', class: "btn btn-primary" %>
 			 	<% end %>
 				<div class="col s12 bar-index-box">

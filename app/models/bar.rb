@@ -10,4 +10,7 @@ class Bar < ApplicationRecord
 	validates :sports, presence: true
 
 	attachment :image
+
+	geocoded_by :address
+	after_validation :geocode
 end

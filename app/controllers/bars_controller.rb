@@ -3,6 +3,9 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
     @posts = Post.page(params[:page]).per(3)
     @posts = Post.where(bar_id: @bar.id)
+    @comment = Comment.new
+    @comments = Comment.where(post_id: @post_id)
+    @commentss = Comment.page(params[:page]).per(3)
   end
 
   def new
@@ -19,6 +22,7 @@ class BarsController < ApplicationController
   end
 
   def search
+    @bar = Bar.all
   end
 
   def index
@@ -26,8 +30,9 @@ class BarsController < ApplicationController
     @bar_result = @search.result.page(params[:bar]).per(10)
   end
 
+
   private
   def bar_params
-    params.require(:bar).permit(:name,:sports,:category,:image,:address,:body)
+    params.require(:bar).permit(:name,:sports,:category,:image,:address,:body,:latitude,:longitude)
   end
 end

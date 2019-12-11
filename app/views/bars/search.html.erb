@@ -8,10 +8,11 @@
         		</div>
         	</div>
         	<div class="row">
-				<div class="input-field col s3 offset-s4 search-bar">
+				    <div class="input-field col s3 offset-s4 search-bar">
           			<input placeholder="住所・地名を入力"id="address" type="text"class="white-text" >
         		</div>
         		<a class="search-searchbox waves-effect waves-light btn"onclick="codeAddress()">検索</a>
+            <!-- <button onclick="getLocation()">現在地を取得</button> -->
 				<div id='map'></div>
 			</div>
 		</div>
@@ -27,6 +28,8 @@
 
 <script>
 	let geocoder
+  var marker = new google.maps.Marker({position: mylatlng, map: map});
+      marker.setMap(map);
 	var map, infoWindow;
 	function initMap(){
 		geocoder = new google.maps.Geocoder()
@@ -61,10 +64,38 @@
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
-        var marker = new google.maps.Marker({position: CurrentPosition, map: map});
-        marker.setMap(map);
       }
 
+
+      function markerEvent(bar) {
+            marker[bar].addListener('click', function() { // マーカーをクリックしたとき
+                closeInfoWindow();
+                infoWindow[i].open(map, marker[bar]); // 吹き出しの表示
+                //マーカー色変更
+                changeIcon(bar);
+                //リストの色変更
+                changeCurrent(bar);
+            });
+        }
+
+         <% @bar.each do |bar| %>
+      (function(){
+        var contentString = "店名：<%= bar.name %>";
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:{lat: <%= bar.latitude %>, lng: <%= bar.longitude %>},
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(map, marker, content);
+        });
+       });
+      <% end %>
 
 
 	function codeAddress(){
@@ -87,5 +118,7 @@
 	    }
 	  });
 	}
+
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP_API_KEY'] %>&callback=initMap" async defer></script>
