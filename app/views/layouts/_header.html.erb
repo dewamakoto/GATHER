@@ -7,17 +7,22 @@
   		<li><a href="/posts" class="#757575 grey darken-1 white-text text-darken-2">投稿一覧</a></li>
   		<li><a href="/favorites" class="#757575 grey darken-1 white-text text-darken-2">お気に入り一覧</a></li>
   		<li><a href="/relationships" class="#757575 grey darken-1 white-text text-darken-2">友達一覧</a></li>
-  		<li><a href="contacts/new" class="#757575 grey darken-1 white-text text-darken-2">お問い合わせ</a></li>
+  		<li><a href="/contacts/new" class="#757575 grey darken-1 white-text text-darken-2">お問い合わせ</a></li>
 	</ul>
 	<nav>
 	    <div class="nav-wrapper  #ff7043 deep-orange lighten-1">
 	      <!-- アドミンでログインした場合 -->
 	      <% if admin_signed_in? %>
-	        <a class="logo"><img src="assets/logo.png" alt="サンプル"></a>
-		    <a class="gather">GATHER</a>
+	        <a href="/bars/search"class="logo"><%= image_tag "logo.png" %></a>
+		    <a href="/bars/search"class="gather">GATHER</a>
 		    <ul id="nav-mobile" class="right hide-on-med-and-down">
-		      <li><a><u>管理者様</u></a></li>
-		    </ul>
+		    	<li><a><u>管理者様</u></a></li>
+		    	<li>
+		    		<%= link_to(destroy_admin_session_path, method: :delete) do %>
+        			<span class="signout"> サインアウト</span>
+        			<% end %>
+        		</li>
+        	</ul>
 		  <!-- エンドユーザーでログインした場合 -->
 	      <% elsif user_signed_in?%>
 	      	  <a href="/bars/search"class="logo"><%= image_tag "logo.png" %></a>

@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :favorites, dependent: :destroy
   has_many :favorited_bars, through: :favorites, source: :bar
-  has_many :comments
+  has_many :comments,dependent: :destroy
   has_many :comunities,through: :user_comunities
-  has_many :posts
+  has_many :posts,dependent: :destroy
 
   attachment :image
 

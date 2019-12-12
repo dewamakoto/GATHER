@@ -1,5 +1,7 @@
 class Admin::ContactsController < ApplicationController
   def show
+  	@contact = Contact.find(params[:id])
+  	@reply = Reply.new
   end
 
   def create
