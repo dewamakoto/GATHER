@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['GOOGLEMAP_API_KEY']
+  default from: ENV['mail_address']
   layout 'mailer'
 end

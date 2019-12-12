@@ -37,8 +37,8 @@ Rails.application.configure do
     port:                 587,
     address:              'smtp.gmail.com',
     domain:               'gmail.com',
-    user_name:            ENV['GOOGLEMAP_API_KEY'],
-    password:             'Zxcv1234',
+    user_name:            ENV['mail_address'],
+    password:             'eeqhwrkbrcsrfkyp',
     authentication:       'login',
     enable_starttls_auto: true
   }

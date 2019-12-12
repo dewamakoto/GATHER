@@ -21,6 +21,7 @@ class BarsController < ApplicationController
     end
   end
 
+
   def search
     @bar = Bar.all
   end
