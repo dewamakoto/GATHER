@@ -5,9 +5,11 @@ class CommentsController < ApplicationController
 		@comment = Comment.create(body: comment_params[:body], user_id: current_user.id)
 		@comment.post = Post.find(params[:comment][:post_id])
 		if @comment.save
-			redirect_to bar_path(params[:comment][:bar_id])
+			#binding.pry
+			render :index
+			#render json: { message: @comment }
+			# redirect_to bar_path(params[:comment][:bar_id])
 		else
-			puts @comment.errors.full_messages
 			render bar_path(params[:comment][:bar_id])
  		end
 	end
@@ -15,7 +17,8 @@ class CommentsController < ApplicationController
 	def destroy
 		@comment = Comment.find(params[:id])
     	@comment.destroy
-    	redirect_to bar_path(params[:comment][:bar_id])
+    	render :index
+    	# redirect_to bar_path(params[:comment][:bar_id])
 	end
 
 
