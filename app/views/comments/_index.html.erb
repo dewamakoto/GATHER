@@ -1,0 +1,13 @@
+<% if comments.any? %>
+	<% comments.each do |comment| %>
+		<p>
+	        <storng><u>投稿者</u>：<%= comment.user.name %></strong><br>
+	      	 &emsp;&emsp;&emsp;&emsp;<%= comment.body %>
+	    </p>
+	    <% if user_signed_in? && comment.user == current_user %>
+        	<div class="delete-content"><%= link_to '削除する', comment_path(comment), method: :delete,remote: true %></div>
+      	<% end %>
+	<% end %>
+<% else %>
+	<div>まだコメントはありません</div>
+<% end %

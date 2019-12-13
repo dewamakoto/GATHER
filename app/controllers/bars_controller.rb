@@ -1,10 +1,10 @@
 class BarsController < ApplicationController
   def show
     @bar = Bar.find(params[:id])
-    @posts = Post.page(params[:page]).per(3)
+    #@posts = Post.page(params[:page]).per(3)
     @posts = Post.where(bar_id: @bar.id)
     @comment = Comment.new
-    @comments = Comment.where(post_id: @post_id)
+    #@comments = Comment.where(post_id: @post_id)
     @commentss = Comment.page(params[:page]).per(3)
   end
 
@@ -20,7 +20,6 @@ class BarsController < ApplicationController
       render 'new'
     end
   end
-
 
   def search
     @bar = Bar.all
