@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   devise_for :users
     get 'bars/search' => 'bars#search', as: 'search'
-    resources :bars, only: [:index, :create, :new, :show]
+    resources :bars, only: [:index, :create, :new, :show] do
+        resources :favorites, only: [:index, :create, :destroy]
+    end
     get 'users/:id/exit' => 'users#exit', as: 'exit'
     root to: 'top#index'
     resources :posts, only: [:destroy, :index, :update]
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
     post 'posts/:id' => 'posts#create', as: 'create_post'
     resources :comments, only: [:create, :destroy]
     resources :comunities, only: [:create, :update, :destroy, :new, :show, :index]
-    resources :favorites, only: [:index, :create, :destroy]
     resources :contacts, only: [:create, :new]
     resources :notifications, only: [:index]
     resources :relationships, only: [:index, :create, :destroy]
