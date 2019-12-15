@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 		Comment.create(comment_params)
 		@comment = Comment.create(body: comment_params[:body], user_id: current_user.id)
 		@comment.post = Post.find(params[:comment][:post_id])
+		@post_id = params[:comment][:post_id]
 		if @comment.save
 			#binding.pry
 			render :index
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
 
 	def destroy
 		@comment = Comment.find(params[:id])
+		@post_id = @comment.post_id
     	@comment.destroy
     	render :index
     	# redirect_to bar_path(params[:comment][:bar_id])

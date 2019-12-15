@@ -27,7 +27,7 @@
 </style>
 
 <script>
-let geocoder
+var geocoder
 var map, infoWindow;
 
 function initMap() {
@@ -37,76 +37,86 @@ function initMap() {
     center: {lat: 35.681236, lng: 139.767125}
   });
   infoWindow = new google.maps.InfoWindow;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('現在地');
-        infoWindow.open(map);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-          // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-  <% @bar.each do |bar| %>
-  var contentString = "店名：<%= @bar.first.name %>";
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('現在地');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
     });
-  var marker = new google.maps.Marker({
-    position: {lat: <%= bar.latitude %>, lng: <%= bar.longitude %>},
-    map: map,
-    title: 'Hello World!'
-  });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+  }
+
+  <% @bar.each do |bar| %>
+    var contentString = "店名：<a href='/bars/<%= bar.id %>'><%= bar.name %></a><br><%= bar.address %>";
+    console.log(contentString);
+    var infowindow = new google.maps.InfoWindow({
+    });
+    var marker = new google.maps.Marker({
+      position: {lat: <%= bar.latitude %>, lng: <%= bar.longitude %>},
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+    google.maps.event.addListener(marker,'click', (function(marker,content,infowindow) {
+      return function(){
+        infowindow.setContent(content);
+        infowindow.open(map,marker);
+      };
+    })(marker,contentString,infowindow));
   <% end %>
 }
 
-  function markerEvent(bar) {
-            marker[bar].addListener('click', function() { // マーカーをクリックしたとき
-                closeInfoWindow();
-                infoWindow[bar].open(map, marker[bar]); // 吹き出しの表示
-                //マーカー色変更
-                changeIcon(bar);
-                //リストの色変更
-                changeCurrent(bar);
-            });
-        }
 
-  function codeAddress(){
-    // 入力を取得
-    let inputAddress = document.getElementById('address').value;
 
-    // geocodingしたあとmapを移動
-    geocoder.geocode( { 'address': inputAddress}, function(results,status) {
-        if (status == 'OK') {
-  　　　　　　　　　　　　// map.setCenterで地図が移動
-          map.setCenter(results[0].geometry.location);
 
-  　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-          var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-          });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        };
-    });
-  }
+function markerEvent(bar) {
+  marker[bar].addListener('click', function() { // マーカーをクリックしたとき
+    closeInfoWindow();
+    infoWindow[bar].open(map, marker[bar]); // 吹き出しの表示
+    //マーカー色変更
+    changeIcon(bar);
+    //リストの色変更
+    changeCurrent(bar);
+  });
+}
+
+function codeAddress(){
+  // 入力を取得
+  let inputAddress = document.getElementById('address').value;
+  // geocodingしたあとmapを移動
+  geocoder.geocode( { 'address': inputAddress}, function(results,status) {
+    if (status == 'OK') {
+  　　　// map.setCenterで地図が移動
+      map.setCenter(results[0].geometry.location);
+  　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+      var marker = new google.maps.Marker({
+        map: map,
+        icon:'<%= asset_url("mapicon.png") %>',
+        animation: google.maps.Animation.BOUNCE,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    };
+  });
+}
 
 
 

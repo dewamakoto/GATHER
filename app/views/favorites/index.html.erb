@@ -1,2 +1,48 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<div class="background-image-bar-index">
+	<div class="background-color-bar-index">
+    	<div class="container">
+    		<div class="row">
+        		<div class="col s3">
+          			<h5 class="user-title">お気に入り一覧</h5>
+          			<div class="border"></div>
+        		</div>
+      		</div>
+      		<div class="row">
+      			<div class="col s12 bar-index-box">
+      				<% if @favorites.any? %>
+		      			<table class="highlight">
+						 	<thead class="thead-light">
+						 		<tr>
+						 			<th>写真</th>
+							 		<th></th>
+									<th>店名</th>
+							 		<th>ジャンル</th>
+									<th>住所</th>
+									<th>お気に入りした日時</th>
+						 		</tr>
+							</thead>
+							<% @favorites.each do |favorite| %>
+								<tbody>
+									<tr>
+										<td><%= attachment_image_tag favorite.bar, :image, :fill, 90, 90, format: 'jpg', fallback: "bar_no_image.png" %></td>
+						 				<td></td>
+								 		<td>
+								 			<%= link_to(bar_path(favorite.bar)) do %>
+												<div><%= favorite.bar.name %></div>
+											<% end %>
+										</td>
+								 		<td><%= favorite.bar.category %></td>
+								 		<td><%= favorite.bar.address %></td>
+										<td><%= favorite.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+									</tr>
+							<% end %>
+						 		</tbody>
+						</table>
+					<% else %>
+						<div>お気に入りしたお店はありません</div>
+					<% end%>
+				</div>
+	    	</div>
+    	</div>
+  	</div>
+</div>

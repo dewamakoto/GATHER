@@ -13,4 +13,8 @@ class Bar < ApplicationRecord
 
 	geocoded_by :address
 	after_validation :geocode
+
+	def favorited_by?(user)
+    self.favorites.where(user_id: user.id).exists?
+  end
 end

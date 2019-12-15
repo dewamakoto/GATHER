@@ -2,11 +2,13 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize/components/color-variables";
- $primary-color: color("blue", "lighten-2") !default;
- $secondary-color: color("yellow", "base") !default;
- @import "materialize";
- @import "material_icons";
+@import "materialize/components/color-variables";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import "materialize";
+@import "material_icons";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 
 // ここからheader
@@ -270,6 +272,20 @@ main {
 
 // show
 
+.bar-show-comment-delete{
+  font-size: 5px;
+}
+
+
+.bar-show-favorite{
+  font-size:10px;
+  margin-top:10px;
+  border: solid 2px #66CCFF;
+  border-radius: 10px;
+  padding:10px;
+}
+
+
 .blank{
   margin-bottom:10px;
 }
@@ -284,15 +300,28 @@ main {
 
 .bar-show-comment-index{
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.bar-show-box-comment-none{
+  background-color: #EEEEEE;
+  border-radius:10px;
 }
 
 .bar-show-box-comment{
   background-color: #EEEEEE;
-  border-radius:10px;
-  margin-bottom: 10px;
+  border-radius:20px;
+  margin-top: 10px;
+  margin-bottom: 1px;
 }
 
+
+.bar-show-box-comment-index{
+  background-color: #EEEEEE;
+  border-radius:20px;
+  margin-bottom: 1px;
+}
 
 .bar-show-box{
   background-color: #EEEEEE;
@@ -300,7 +329,7 @@ main {
 }
 
 .bar-show-box-all{
-  background-color: #EEEEEE;
+  background-color: #EEEEEE ;
   border-radius:10px;
   margin-top: 50px;
   margin-bottom: 0;
@@ -348,13 +377,13 @@ main {
   background-image: url(sign_in.jpg);
   background-size: cover;
   width: 100%;
-  height: 2000px;
+  height: auto;
 }
 
 .background-color-bar-show{
   background-color: rgba( 0, 0, 0, 0.7);
   width: 100%;
-  height: 2000px;
+  height: auto;
 }
 
 .post-title{

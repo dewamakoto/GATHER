@@ -14,7 +14,7 @@ class User < ApplicationRecord
   attachment :image
 
 
-  # validates :name, presence: true, length: { maximum: 15 }
+  validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

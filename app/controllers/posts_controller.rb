@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def index
   	@user = current_user
   	@posts = Post.page(params[:page]).per(5)
+    @comments = Comment.page(params[:page]).per(3)
   	@posts = Post.where(user_id: current_user.id)
   end
 
