@@ -11,7 +11,7 @@
       <div class="row user-show-contents">
         <div class="user-info">
           <div class="col s4 offset-s5">
-            <%= attachment_image_tag @user, :image, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpg', fallback: "no_image.jpg" %>
           </div>
 
           <div class="col s4 offset-s4">
@@ -26,17 +26,16 @@
         </div>
       </div>
 
-    </div>
-
-    <div class="row user-show-button">
-      <div class="col s1 offset-s5">
-        <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-success mx-auto btn-lg" %>
-      </div>
-      <div class="col s2 ">
-        <%= link_to "退会する", exit_path(current_user.id), class: "btn btn-success mx-auto btsn-lg #b71c1c red darken-4" %>
-      </div>
-      <div class="col s2 offset-s5 user-show-post-index">
-        <%= link_to "投稿一覧へ", posts_path  %>
+      <div class="row user-show-button">
+        <div class="col s2 offset-s4">
+          <%= link_to "編集する", edit_user_path(current_user.id), class: "btn btn-success mx-auto btn-lg" %>
+        </div>
+        <div class="col s2 ">
+          <%= link_to "退会する", exit_path(current_user.id), class: "btn btn-success mx-auto btsn-lg #b71c1c red darken-4" %>
+        </div>
+        <div class="col s2 offset-s5 user-show-post-index">
+          <%= link_to "投稿一覧へ", posts_path  %>
+        </div>
       </div>
     </div>
   </div>

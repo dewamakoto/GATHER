@@ -12,7 +12,7 @@
       			<div class="row user-show-contents">
         			<div class="user-info">
           				<div class="col s4 offset-s5 user-edit-image">
-            				<%= attachment_image_tag @user, :image_id, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
+            				<%= attachment_image_tag @user, :image, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
             				<%= f.attachment_field :image %>
           				</div>
 
