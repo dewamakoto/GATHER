@@ -1,0 +1,116 @@
+<div class="background-image-relationship-index">
+ 	<div class="background-color-relationship-index">
+		<div class="container">
+			<div class="row">
+				<div class="col s8 offset-s2 bar-index-box">
+					<div class="relationships-index-title"><b>あなたが友達申請しているユーザー</b></div>
+	    			<% if @following.any? %>
+						<table class="highlight">
+				 			<thead class="thead-light">
+				 				<tr>
+				 					<th></th>
+				 					<th>写真</th>
+					 				<th></th>
+					 				<th></th>
+					 				<th>ユーザー名</th>
+					 				<th></th>
+				 				</tr>
+				 			</thead>
+					 		<% @following.each do |following| %>
+					 			<tbody>
+									<tr>
+										<td></td>
+				 						<td><%= attachment_image_tag following.follow, :image, :fill, 70, 70, format: 'jpg', fallback: "bar_no_image.png" %></td>
+				 						<td></td>
+				 						<td></td>
+					 					<td><%= link_to(user_path(following.follow.id)) do %>
+												<div><%= following.follow.name %></div>
+											<% end %>
+										</td>
+										<td></td>
+					 				</tr>
+							<% end %>
+				 				</tbody>
+				 		</table>
+					<% else %>
+				 		<h6>申請中のユーザーはいません</h6>
+				 	<% end %>
+	    		</div>
+	    	</div>
+
+	    	<div class="row">
+	    		<div class="col s8 offset-s2 bar-index-box">
+					<div class="relationships-index-title"><b>あなたに友達申請中のユーザー</b></div>
+	    			<% if @follow_user.any? %>
+						<table class="highlight">
+				 			<thead class="thead-light">
+				 				<tr>
+				 					<th></th>
+				 					<th>写真</th>
+					 				<th></th>
+					 				<th></th>
+					 				<th>ユーザー名</th>
+					 				<th></th>
+				 				</tr>
+				 			</thead>
+					 		<% @follow_user.each do |follow| %>
+					 			<tbody>
+									<tr>
+										<th></th>
+				 						<td><%= attachment_image_tag follow.user, :image, :fill, 70, 70, format: 'jpg', fallback: "bar_no_image.png" %></td>
+				 						<td></td>
+				 						<td></td>
+					 					<td><%= link_to(user_path(follow.user.id)) do %>
+												<div><%= follow.user.name %></div>
+											<% end %>
+										</td>
+										<td></td>
+					 				</tr>
+							<% end %>
+				 				</tbody>
+				 		</table>
+					<% else %>
+				 		<h6>あなたに友達申請中のユーザーはいません</h6>
+				 	<% end %>
+	    		</div>
+	    	</div>
+
+	    	<div class="row">
+	    		<div class="col s8 offset-s2 bar-index-box">
+					<div class="relationships-index-title"><b>友達一覧</b></div>
+	    			<% if @friends.any? %>
+						<table class="highlight">
+				 			<thead class="thead-light">
+				 				<tr>
+				 					<th></th>
+				 					<th>写真</th>
+					 				<th></th>
+					 				<th></th>
+					 				<th>ユーザー名</th>
+					 				<th></th>
+				 				</tr>
+				 			</thead>
+					 		<% @friends.each do |friends| %>
+					 			<tbody>
+									<tr>
+										<td></td>
+				 						<td><%= attachment_image_tag friends, :image, :fill, 70, 70, format: 'jpg', fallback: "bar_no_image.png" %></td>
+				 						<td></td>
+					 					<td></td>
+					 					<td><%= link_to(user_path(friends)) do %>
+												<div><%= friends.name %></div>
+											<% end %>
+										</td>
+										<td></td>
+					 				</tr>
+							<% end %>
+				 				</tbody>
+				 		</table>
+					<% else %>
+				 		<h6>あなたに友達申請中のユーザーはいません</h6>
+				 	<% end %>
+	    		</div>
+	    	</div>
+		</div>
+	</div>
+</div>

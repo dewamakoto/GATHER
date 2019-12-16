@@ -9,60 +9,68 @@
       </div>
       <div class="row">
       	<div class="col s8 offset-s2">
-
-      		<% @posts.each do |post| %>
-      			<div class="col s12 bar-post-box">
-      				<div class="col s5 bar-show-user">
-      					<div class=" col s12 bar-show-post-destroy">
-      						<%= link_to "削除する", post_path(post), method: :delete, "data-confirm" => "本当に消去しますか？",class:"col s3 offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4" %>
-      					</div>
-      					<div class="bar-show-post-image">
-      						<%= attachment_image_tag post, :image, :fill, 130, 130, format: 'jpg', fallback: "bar_no_image.png" %>
-      					</div>
-      				</div>
-      				<div class="col s7 bar-show-post-date">
-                <div class="post-index-bar-name"><u>店名</u>：<%= link_to(bar_path(post.bar_id)) do %>
-                  <%= post.bar.name %><br><% end %>
-                </div>
-      					<u>投稿日時</u>：<%= post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
-      					<div class="bar-show-post-title">
-      						<u>件名</u>：<%= post.title %>
-      					</div>
-      					<div class="bar-show-post-title">
-      						<u>内容</u>：<%= post.body %>
-      					</div>
-      				</div>
-      			</div>
-            <div class="col s12 bar-show-box-comment">
-              <div class="bar-show-comment-index">＜<u>コメント一覧</u>＞</div>
-            </div>
-            <% if post.comments.any? %>
-              <% post.comments.each do |comment| %>
-                <div class="col s12 bar-show-box-comment-index">
-                  <div class="row"style="margin-bottom: 0;">
-                    <div class="col s4 ">
-                      <storng><u>投稿者</u>：<%= comment.user.name %></strong><br>
-                    </div>
-                    <div class="col s4">
-                      <storng><%= comment.created_at.strftime("%m月%d日 %H時%M分") %></strong><br>
-                    </div>
-                    <% if user_signed_in? && comment.user == current_user %>
-                      <div class="bar-show-comment-delete"><%= link_to '削除', comment_path(comment), method: :delete,remote: true,"data-confirm" => "本当に消去しますか？",class:"col s2  offset-s1 btn btn-small #b71c1c red darken-4 bar-show-comment-delete" %>
-                       </div>
-                    <% end %>
+          <% if @posts.any? %>
+        		<% @posts.each do |post| %>
+        			<div class="col s12 bar-post-box">
+        				<div class="col s5 bar-show-user">
+        					<div class=" col s12 bar-show-post-destroy">
+        						<%= link_to "削除する", post_path(post), method: :delete, "data-confirm" => "本当に消去しますか？",class:"col s3 offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4" %>
+        					</div>
+        					<div class="bar-show-post-image">
+        						<%= attachment_image_tag post, :image, :fill, 130, 130, format: 'jpg', fallback: "bar_no_image.png" %>
+        					</div>
+        				</div>
+        				<div class="col s7 bar-show-post-date">
+                  <div class="post-index-bar-name"><u>店名</u>：<%= link_to(bar_path(post.bar_id)) do %>
+                    <%= post.bar.name %><br><% end %>
                   </div>
-                  <div class="row comment-body" style="margin-bottom: 0;">
-                    &emsp;&emsp;&emsp;&emsp;<%= comment.body %>
-                  </div>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="col s12 bar-show-box-comment-none">
-                <div><b>まだコメントはありません</b></div>
+        					<u>投稿日時</u>：<%= post.created_at.strftime("%Y年%m月%d日 %H時%M分") %>
+        					<div class="bar-show-post-title">
+        						<u>件名</u>：<%= post.title %>
+        					</div>
+        					<div class="bar-show-post-title">
+        						<u>内容</u>：<%= post.body %>
+        					</div>
+        				</div>
+        			</div>
+              <div class="col s12 bar-show-box-comment">
+                <div class="bar-show-comment-index">＜<u>コメント一覧</u>＞</div>
               </div>
-              <div class="blank"></div>
+              <% if post.comments.any? %>
+                <% post.comments.each do |comment| %>
+                  <div class="col s12 bar-show-box-comment-index">
+                    <div class="row"style="margin-bottom: 0;">
+                      <div class="col s4 ">
+                        <u>投稿者</u>：
+                        <%= link_to(user_path(comment.user)) do %>
+                          <span><%= comment.user.name %></span>
+                        <% end %>
+                      </div>
+                      <div class="col s4">
+                        <storng><%= comment.created_at.strftime("%m月%d日 %H時%M分") %></strong><br>
+                      </div>
+                      <% if user_signed_in? && comment.user == current_user %>
+                        <div class="bar-show-comment-delete"><%= link_to '削除', comment_path(comment), method: :delete,"data-confirm" => "本当に消去しますか？",class:"col s2  offset-s1 btn btn-small #b71c1c red darken-4 bar-show-comment-delete" %>
+                         </div>
+                      <% end %>
+                    </div>
+                    <div class="row comment-body" style="margin-bottom: 0;">
+                      &emsp;&emsp;&emsp;&emsp;<%= comment.body %>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="col s12 bar-show-box-comment-none">
+                  <div><b>まだコメントはありません</b></div>
+                </div>
+                <div class="blank"></div>
+              <% end %>
+              <div class="col s12 post-index-each-post-blank" ></div>
             <% end %>
-            <div class="col s12 post-index-each-post-blank" ></div>
+          <% else %>
+            <div class="col s12 post-index-box-post-none">
+              <div><b>まだ投稿はありません<br>投稿してみましょう！</b></div>
+            </div>
           <% end %>
         </div>
 	    </div>
