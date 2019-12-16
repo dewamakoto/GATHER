@@ -1,38 +1,48 @@
 <div class="background-image-user-show">
 	<div class="background-color-user-show">
-    	<div class="container">
-      		<div class="row">
-        		<div class="col s3">
-          			<h5 class="user-title">会員情報の編集</h5>
-          			<div class="border"></div>
-        		</div>
-      		</div>
+    <div class="container">
+      <div class="row">
+      	<div class="col s3">
+      		<h5 class="user-title">会員情報の編集</h5>
+        	<div class="border"></div>
+    		</div>
+    	</div>
 
-			<%= form_for(@user) do |f| %>
-      			<div class="row user-show-contents">
-        			<div class="user-info">
-          				<div class="col s4 offset-s5 user-edit-image">
-            				<%= attachment_image_tag @user, :image, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
-            				<%= f.attachment_field :image %>
-          				</div>
+    	<%= form_for(@user) do |f| %>
+      	<div class="row user-show-contents">
+        	<div class="user-info">
+          	<div class="col s4 offset-s5 user-edit-image">
+            	<%= attachment_image_tag @user, :image, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
+            	<%= f.attachment_field :image %>
+          	</div>
 
 						<div class="col s4 offset-s4">
-       						<%= f.label :名前（姓）, class: "float-left" %><br>
-							<%= f.text_field :name, autofocus: true, autocomplete: "name", class: "user-show-name col-auto form-control form-control-lg w-100" %>
+       				<%= f.label :名前（姓）, class: "float-left" %><br>
+						  <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "user-show-name col-auto form-control form-control-lg w-100" %>
 						</div>
 
-          				<div class="col s4 offset-s4">
-            				<%= f.label :メールアドレス %><br>
-       						<%= f.email_field :email, autocomplete: "email", class: "user-show-name col-auto form-control form-control-lg w-100" %>
-          				</div>
-        			</div>
-      			</div>
+            <div class="col s4 offset-s4">
+              <%= f.label :好きなスポーツ, class: "float-left" %><br>
+              <%= f.text_field :favorite_sports, autofocus: true, autocomplete: "name", class: "user-show-name col-auto form-control form-control-lg w-100" %>
+            </div>
 
-    			<div class="row end_user text-center">
-					<div class="col s2 offset-s3"></div>
-					<%= f.submit "保存する", class: "btn btn-success mx-auto btn-lg" %>
+            <div class="col s4 offset-s4">
+              <%= f.label :好きなお酒, class: "float-left" %><br>
+              <%= f.text_field :favorite_sake, autofocus: true, autocomplete: "name", class: "user-show-name col-auto form-control form-control-lg w-100" %>
+            </div>
+
+        		<div class="col s4 offset-s4">
+            	<%= f.label :メールアドレス %><br>
+       				<%= f.email_field :email, autocomplete: "email", class: "user-show-name col-auto form-control form-control-lg w-100" %>
+          	</div>
+        	</div>
+      	</div>
+
+    		<div class="row end_user text-center">
+				  <div class="col s2 offset-s3"></div>
+			<%= f.submit "保存する", class: "btn btn-success mx-auto btn-lg" %>
 				</div>
-	    	<% end %>
-    	</div>
+	    <% end %>
+    </div>
 	</div>
 </div>

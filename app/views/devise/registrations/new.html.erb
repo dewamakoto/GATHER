@@ -13,8 +13,18 @@
           </div>
 
           <div class="col s5 offset-s3 field">
-            <%= f.label :name %><br />
+            <%= f.label :ユーザー名 %><br />
             <%= f.text_field :name, autofocus: true, autocomplete: "name",class:"white-text" %>
+          </div>
+
+          <div class="col s5 offset-s3 field">
+            <%= f.label :好きなスポーツ %><br />
+            <%= f.text_field :favorite_sports, autofocus: true, autocomplete: "name",class:"white-text" %>
+          </div>
+
+          <div class="col s5 offset-s3 field">
+            <%= f.label :好きなお酒 %><br />
+            <%= f.text_field :favorite_sake, autofocus: true, autocomplete: "name",class:"white-text" %>
           </div>
 
           <div class="col s5 offset-s3 field">

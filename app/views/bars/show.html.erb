@@ -52,7 +52,10 @@
             <% @posts.each do |post| %>
               <div class="col s12 bar-show-box-all">
                 <div class="col s5 bar-show-user">
-                  <u>投稿者</u>：<%= post.user.name %>
+                  <u>投稿者</u>：
+                  <%= link_to(user_path(post.user)) do %>
+                    <span><%= post.user.name %></span>
+                  <% end %>
                   <div class="bar-show-post-image">
                     <%= attachment_image_tag post, :image, :fill, 130, 130, format: 'jpg', fallback: "bar_no_image.png" %>
                   </div>
@@ -79,7 +82,7 @@
                 <%= render  partial: 'comments/index', locals: { comments: post.comments } %>
               </div>
               <div class="blank"></div>
-              <div class="col s12 bar-show-box-comment">
+              <div class="col s8 bar-show-box-comment">
                 <% if user_signed_in? %>
                   <%= render  partial:'comments/form', locals: { comment: @comment, bar: @bar, post: post  } %>
                 <% end %>

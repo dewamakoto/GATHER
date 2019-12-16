@@ -3,7 +3,10 @@
 		<div class="col s12 bar-show-box-comment-index">
 			<div class="row"style="margin-bottom: 0;">
 				<div class="col s4 ">
-		        	<storng><u>投稿者</u>：<%= comment.user.name %></strong><br>
+					<u>投稿者</u>：
+                  	<%= link_to(user_path(comment.user)) do %>
+                    	<span><%= comment.user.name %></span>
+                  	<% end %>
 		    	</div>
 		    	<div class="col s4">
 		        	<storng><%= comment.created_at.strftime("%m月%d日 %H時%M分") %></strong><br>

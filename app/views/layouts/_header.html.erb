@@ -1,14 +1,4 @@
 <div class="navbar-fixed">
-	<ul id="dropdown1" class="dropdown-content">
-  		<li><a href="/bars/search" class="#757575 grey darken-1 white-text text-darken-2">現在地から探す</a></li>
-  		<li><a href="/bars" class="#757575 grey darken-1 white-text text-darken-2">店名検索</a></li>
-  		<li><a href="/bars/new" class="#757575 grey darken-1 white-text text-darken-2">店舗新規登録</a></li>
-  		<li><a href="/users/id" class="#757575 grey darken-1 white-text text-darken-2">マイページ</a></li>
-  		<li><a href="/posts" class="#757575 grey darken-1 white-text text-darken-2">投稿一覧</a></li>
-  		<li><a href="/bars/:bar_id/favorites" class="#757575 grey darken-1 white-text text-darken-2">お気に入り一覧</a></li>
-  		<li><a href="/relationships" class="#757575 grey darken-1 white-text text-darken-2">友達一覧</a></li>
-  		<li><a href="/contacts/new" class="#757575 grey darken-1 white-text text-darken-2">お問い合わせ</a></li>
-	</ul>
 	<nav>
 	    <div class="nav-wrapper  #ff7043 deep-orange lighten-1">
 	      <!-- アドミンでログインした場合 -->
@@ -28,12 +18,26 @@
 	      	  <a href="/bars/search"class="logo"><%= image_tag "logo.png" %></a>
 		      <a href="/bars/search"class="gather">GATHER</a>
 			  <ul id="nav-mobile" class="right hide-on-med-and-down">
-			    <li><a><u><%= current_user.name %>さん</u></a></li>
+			  	<li>
+			  		<%= link_to(user_path(current_user.id)) do %>
+	        			<a><u><%= current_user.name %>さん</u></a>
+	      			<% end %>
+			    </li>
 			    <li><%= link_to(destroy_user_session_path, method: :delete) do %>
         			<span class="signout"> サインアウト</span>
         		<% end %></li>
 			    <li><a id='dropdown-trigger1' class="dropdown-trigger" href="#!" data-target="dropdown1">会員メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
 			  </ul>
+			<ul id="dropdown1" class="dropdown-content">
+  				<li><a href="/bars/search" class="#757575 grey darken-1 white-text text-darken-2">現在地から探す</a></li>
+  				<li><a href="/bars" class="#757575 grey darken-1 white-text text-darken-2">店名検索</a></li>
+  				<li><a href="/bars/new" class="#757575 grey darken-1 white-text text-darken-2">店舗新規登録</a></li>
+  				<li><%= link_to "マイページ",(user_path(current_user.id)),class:"#757575 grey darken-1 white-text text-darken-2"  %></li>
+  				<li><a href="/posts" class="#757575 grey darken-1 white-text text-darken-2">投稿一覧</a></li>
+  				<li><a href="/bars/:bar_id/favorites" class="#757575 grey darken-1 white-text text-darken-2">お気に入り一覧</a></li>
+  				<li><a href="/relationships" class="#757575 grey darken-1 white-text text-darken-2">友達一覧</a></li>
+  				<li><a href="/contacts/new" class="#757575 grey darken-1 white-text text-darken-2">お問い合わせ</a></li>
+			</ul>
 		  <!-- 非ログイン時 -->
 	      <% else %>
 	      <a href="/"class="logo"><%= image_tag "logo.png" %></a>

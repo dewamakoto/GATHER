@@ -1,17 +1,8 @@
 <div>コメントを投稿する</div>
 	<%= form_with(model: [comment], url: comments_path(params[:id])) do |f| %>
 	    <%= f.hidden_field :post_id,value:post.id %>
-		<%= f.text_field :body, class: "col s6 form-control form-control-lg w-100 comment-body" %>
-	<%= f.submit "投稿", class:"col-xs-4 col-xs-offset-4 btn btn-small" %>
+		<%= f.text_field :body, class: "col s9 form-control form-control-lg w-100 comment-body" %>
+	<%= f.submit "投稿", class:" btn btn-small" %>
 <% end %>
 
 
-
-
-<!-- <div>コメントを投稿する</div>
-	<%#= form_for(@comment, url: comments_path(params[:id])) do |f| %>
-	    <%#= f.hidden_field :post_id,value:post.id %>
-	    <%#= f.hidden_field :bar_id,value:@bar.id %>
-		<%#= f.text_field :body, class: "col s6 form-control form-control-lg w-100" %>
-	<%#= f.submit "投稿", class:"col-xs-4 col-xs-offset-4 btn btn-small" %>
-<%# end %> -->
