@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col s5 bar-show-box">
           <div class="bar-show-image">
-            <%= attachment_image_tag @bar, :image, :fill, 200, 200, format: 'jpg', fallback: "bar_no_image.png" %>
+            <%= attachment_image_tag @bar, :image, :fill, 200, 200, format: 'jpg', fallback: "bar_no_image.png",size:'200x200' %>
             <div>
               <% if user_signed_in? %>
                 <% if @favorite.favorited_by?(current_user,@bar) %>
@@ -75,7 +75,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col s12 bar-show-box-comment">
+              <div class="col s11 bar-show-box-comment">
                 <div class="bar-show-comment-index">＜<u>コメント一覧</u>＞</div>
               </div>
               <div id="post-<%= post.id %>-comment_area">

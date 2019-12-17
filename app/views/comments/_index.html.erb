@@ -1,6 +1,6 @@
 <% if comments.any? %>
 	<% comments.each do |comment| %>
-		<div class="col s12 bar-show-box-comment-index">
+		<div class="col s11 bar-show-box-comment-index">
 			<div class="row"style="margin-bottom: 0;">
 				<div class="col s4 ">
 					<u>投稿者</u>：
@@ -8,11 +8,11 @@
                     	<span><%= comment.user.name %></span>
                   	<% end %>
 		    	</div>
-		    	<div class="col s4">
+		    	<div class="col s4 bar-show-comment-date">
 		        	<storng><%= comment.created_at.strftime("%m月%d日 %H時%M分") %></strong><br>
 		    	</div>
 		    	<% if user_signed_in? && comment.user == current_user %>
-	        		<div class="bar-show-comment-delete"><%= link_to '削除', comment_path(comment), method: :delete,remote: true,"data-confirm" => "本当に消去しますか？",class:"col s2  offset-s1 btn btn-small #b71c1c red darken-4 bar-show-comment-delete" %>
+	        		<div class="bar-show-comment-delete"><%= link_to '削除', comment_path(comment), method: :delete,remote: true,"data-confirm" => "本当に消去しますか？",class:"col s2  offset-s1 #b71c1c red darken-4 bar-show-comment-delete" %>
 		        	</div>
 	      		<% end %>
 	      	</div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rooms/show'
   devise_for :admins
   namespace :admin do
     resources :contacts, only: [:create, :index, :show]
