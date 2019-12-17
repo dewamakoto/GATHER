@@ -5,11 +5,10 @@ class CommentsController < ApplicationController
 		@comment = Comment.create(body: comment_params[:body], user_id: current_user.id)
 		@comment.post = Post.find(params[:comment][:post_id])
 		@post_id = params[:comment][:post_id]
+		@post = @comment.post
 		if @comment.save
-			#binding.pry
+			@post.create_notification_comment(current_user, @comment.id)
 			render :index
-			#render json: { message: @comment }
-			# redirect_to bar_path(params[:comment][:bar_id])
 		else
 			render bar_path(params[:comment][:bar_id])
  		end

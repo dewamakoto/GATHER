@@ -50,7 +50,7 @@
                         <storng><%= comment.created_at.strftime("%m月%d日 %H時%M分") %></strong><br>
                       </div>
                       <% if user_signed_in? && comment.user == current_user %>
-                        <div class="bar-show-comment-delete"><%= link_to '削除', comment_path(comment), method: :delete,"data-confirm" => "本当に消去しますか？",class:"col s2  offset-s1 btn btn-small #b71c1c red darken-4 bar-show-comment-delete" %>
+                        <div class="bar-show-comment-delete"><%= link_to '削除', comment_path(comment), method: :delete,"data-confirm" => "本当に消去しますか？",class:"col s2  offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4 bar-show-comment-delete" %>
                          </div>
                       <% end %>
                     </div>

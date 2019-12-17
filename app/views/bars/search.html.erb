@@ -66,7 +66,6 @@ function initMap() {
 
   <% @bar.each do |bar| %>
     var contentString = "店名：<a href='/bars/<%= bar.id %>'><%= bar.name %></a><br><%= bar.address %>";
-    console.log(contentString);
     var infowindow = new google.maps.InfoWindow({
     });
     var marker = new google.maps.Marker({

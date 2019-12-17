@@ -18,12 +18,22 @@
 	      	  <a href="/bars/search"class="logo"><%= image_tag "logo.png" %></a>
 		      <a href="/bars/search"class="gather">GATHER</a>
 			  <ul id="nav-mobile" class="right hide-on-med-and-down">
-			  	<li>
-			  		<%= link_to(user_path(current_user.id)) do %>
-	        			<a><u><%= current_user.name %>さん</u></a>
+			    <li>
+			    	<%= link_to(user_path(current_user)) do %>
+	        			<span><u><%= current_user.name %>さん</u></span>
 	      			<% end %>
-			    </li>
-			    <li><%= link_to(destroy_user_session_path, method: :delete) do %>
+	      		</li>
+        		<li>
+        			<span class="fa-stack g-notification">
+        				<%= link_to(notifications_path) do %>
+        					<i class="fas fa-bell fa-stack-2x f-notification"></i>
+        					<% if unchecked_notifications.any? %>
+    							<i class="fa fa-circle fa-stack-1x a-notification"></i>
+  							<% end %>
+        				<% end %>
+        			</span>
+        		</li>
+        		<li><%= link_to(destroy_user_session_path, method: :delete) do %>
         			<span class="signout"> サインアウト</span>
         		<% end %></li>
 			    <li><a id='dropdown-trigger1' class="dropdown-trigger" href="#!" data-target="dropdown1">会員メニュー<i class="material-icons right">arrow_drop_down</i></a></li>
