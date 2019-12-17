@@ -13,6 +13,16 @@ $secondary-color: color("yellow", "base") !default;
 
 // ここからheader
 
+.a-notification{
+  color:gold;
+  padding-left:20px;
+  padding-top: 10px;
+}
+
+.g-notification{
+  padding-bottom: 100px;
+}
+
 .logo{
 	margin-left: 10px;
 	margin-right: 10px;
@@ -482,6 +492,14 @@ main {
 
 // relationship
 
+.relationship-friend-name{
+  font-size: 16px;
+}
+
+.notification-user-name{
+  margin-top: 5px;
+}
+
 .background-image-relationship-index{
   background-image: url(sign_up.jpg);
   background-size: cover;
@@ -499,4 +517,38 @@ main {
   font-size:20px;
   text-align: center;
   margin-bottom: 15px;
+}
+
+// notification
+
+.notification-comment-border{
+  width: 90%;
+  height: 1px;
+  background-color:#dadada;
+  margin: 0 auto;
+  border-style: ridge;
+}
+
+.notification-user-image{
+  border-radius: 100px;
+}
+
+.notification-index-box-comment{
+  background-color: #EEEEEE;
+  border-radius:20px;
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
+
+.background-image-notification-index{
+  background-image: url(sign_in.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 1600px;
+}
+
+.background-color-notification-index{
+  background-color: rgba( 0, 0, 0, 0.7);
+  width: 100%;
+  height: 1600px;
 }

@@ -94,11 +94,11 @@
 					 			<tbody>
 									<tr>
 										<td></td>
-				 						<td><%= attachment_image_tag friends, :image, :fill, 70, 70, format: 'jpg', fallback: "bar_no_image.png" %></td>
+				 						<td><%= attachment_image_tag friends, :image, :fill, 60, 60, format: 'jpg', fallback: "bar_no_image.png",size:'60x60',class:"notification-user-image" %></td>
 				 						<td></td>
 					 					<td></td>
 					 					<td><%= link_to(user_path(friends)) do %>
-												<div><%= friends.name %></div>
+												<div class="relationship-friend-name"><%= friends.name %></div>
 											<% end %>
 										</td>
 										<td></td>

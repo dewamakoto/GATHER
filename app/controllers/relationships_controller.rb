@@ -5,6 +5,7 @@ def create
   user = User.find(params[:follow_id])
   following = current_user.follow(user)
   if following.save
+    user.create_notification_follow(current_user)
     flash[:success] = '友達申請しました'
     redirect_to user_path(user)
   else
