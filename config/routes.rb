@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :update, :show]
     resources :messages, :only => [:create]
     resources :rooms, :only => [:create, :show, :index]
+    get '/about' => 'top#about', as: 'top_about'
 
 
 
