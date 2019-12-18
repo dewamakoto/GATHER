@@ -33,11 +33,5 @@ def create
     jyogai_id = @friends.pluck(:id)
     @following = Relationship.where(user_id: current_user.id).where.not(follow_id: jyogai_id)
     @follow_user = Relationship.where(follow_id: current_user.id).where.not(user_id: jyogai_id)
-
-
   end
-
-private
-
-
 end

@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :joins, dependent: :destroy
+  has_many :rooms, through: :joins
 
   def follow(other_user)
     unless self == other_user
@@ -49,9 +52,26 @@ class User < ApplicationRecord
 
   attachment :image
 
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        name:  auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        image:  auth.info.image
+      )
+    end
+
+    user
+  end
+
 
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,:omniauthable
 end

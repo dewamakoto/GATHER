@@ -19,7 +19,7 @@
 
 
           <div class="col s4 offset-s4">
-            <label class="float-left">名前（姓)</label>
+            <label class="float-left">ユーザー名</label>
             <input type="text" class="user-show-name col-auto form-control" value="<%= @user.name %>" readonly>
           </div>
 
@@ -33,6 +33,17 @@
             <input type="text" class="user-show-name col-auto form-control" value="<%= @user.favorite_sake %>" readonly>
           </div>
 
+          <div>
+
+
+<% if @user.friends %>
+
+    <p><a href="/rooms/<%= @room_id %>">チャットへ</a>
+<% end %>
+</div>
+
+
+
           <% if @user == current_user %>
             <div class="col s4 offset-s4">
               <label class="control-label " for="InputText">メールアドレス</label>
@@ -40,6 +51,7 @@
             </div>
         </div>
       </div>
+
 
       <div class="row user-show-button">
         <div class="col s2 offset-s4">
