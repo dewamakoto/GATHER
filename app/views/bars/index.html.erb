@@ -12,7 +12,7 @@
 	  				<%= f.search_field :name_or_sports_or_address_cont, class:"col s4 offset-s4 bar-index-search", placeholder: '店名・住所・スポーツ名のいずれかを入力' %>
 					<%= f.submit ' 検索する', class: "btn btn-primary" %>
 			 	<% end %>
-				<div class="col s12 bar-index-box">
+				<div class="col s12 bar-index-box-post-none">
 	    			<% if @bar_result.any? %>
 						<table class="highlight">
 				 			<thead class="thead-light">
@@ -46,6 +46,7 @@
 				 	<% end %>
 	    		</div>
 	    	</div>
+	    	<div class="post-index-blank" ></div>
     	</div>
   	</div>
 </div>

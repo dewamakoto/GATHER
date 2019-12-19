@@ -36,11 +36,11 @@
           <div>
 
 
-<% if @user.friends %>
-
-    <p><a href="/rooms/<%= @room_id %>">チャットへ</a>
-<% end %>
-</div>
+  <%= form_with model: @room do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
 
 
 

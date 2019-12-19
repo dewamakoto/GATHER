@@ -12,10 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require_tree .
 //= require jquery
+//= require jquery.turbolinks
 //= require materialize
+//= require turbolinks
+//= require_tree .
 
+$(document).on('turbolinks:load', function() {
+  $('.dropdown-trigger').dropdown();
+});
 
 function getLocation() {
     if (navigator.geolocation) {

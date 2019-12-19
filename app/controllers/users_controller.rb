@@ -2,23 +2,8 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     # addtest
-    @current_user_join=Join.where(user_id: current_user.id)
-    @user_join=Join.where(user_id: @user.id)
-    if @user.id == current_user.id
-    else
-      @current_user_join.each do |f|
-        @user_join.each do |t|
-          if f.room_id == t.room_id then
-            @match = true
-            @room_id = f.room_id
-          end
-        end
-      end
-      if @match
-      else
-        @room = Room.new
-        @join = Join.new
-      end
+    if user_signed_in?
+      @room = Room.new
     end
   end
 

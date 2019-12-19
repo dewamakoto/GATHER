@@ -61,7 +61,7 @@
                   </div>
                 </div>
                 <div class="col s7 bar-show-post-date">
-                  <% if post.user_id == current_user.id %>
+                  <% if user_signed_in? && post.user_id == current_user.id %>
                     <div class=" col s12 bar-show-post-destroy">
                       <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に消しますか？",class:"col s4 offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4" %>
                     </div>
