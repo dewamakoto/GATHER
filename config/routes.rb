@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :messages, :only => [:create]
     resources :rooms, :only => [:create, :show, :index]
     get '/about' => 'top#about', as: 'top_about'
+    get 'bars/index/result' => 'bars#index_result', as: 'index_result'
 
 
 

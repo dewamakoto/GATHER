@@ -69,7 +69,7 @@ function initMap() {
 
 
   <% @bar.each do |bar| %>
-    var contentString = '<%= attachment_image_tag bar, :image, :fill, 50, 50, format: 'jpg', fallback: 'bar_no_image.png',size:'60x60'%>'+'<br>' +'店名：<%= link_to bar_path(bar.id) do %><span class=“link”><%= bar.name %></span><% end %>'+'<br>'+'<%= bar.address %>'+'<br>';
+    var contentString = '<%= attachment_image_tag bar, :image, :fill, 150, 150, format: 'jpg', fallback: 'bar_no_image.png',size:'150x150'%>'+'<br>' +'店名：<%= link_to bar_path(bar.id) do %><span class=“link”><%= bar.name %></span><% end %>'+'<br>'+'<%= bar.address %>'+'<br>';
     var infowindow = new google.maps.InfoWindow({
     });
     var marker = new google.maps.Marker({

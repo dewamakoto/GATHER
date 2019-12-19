@@ -14,7 +14,7 @@
       <div class="row user-show-contents">
         <div class="user-info">
           <div class="col s4 offset-s5">
-            <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @user, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg",class:"notification-user-image" %>
           </div>
 
 
@@ -36,11 +36,26 @@
           <div>
 
 
-  <%= form_with model: @room do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.submit %>
+ <h1>ユーザー詳細</h1>
+
+<h2><%= @user.email %></h2>
+
+<% if @user.id == current_user.id %>
+
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+  <% else %>
+    <%= form_for @room do |f| %>
+      <%= fields_for @join do |e| %>
+        <%= e.hidden_field :user_id, :value=> @user.id %>
+      <% end %>
+      <%= f.submit "チャットを始める" %>
+    <% end %>
   <% end %>
+<% end %>
+
+<%= link_to "ユーザー一覧に戻る", root_path %>
 
 
 
