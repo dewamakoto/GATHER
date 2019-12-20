@@ -1,2 +1,45 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<%= render 'admin/admin_menu' %>
+<div class="container">
+    <div class="row">
+      	<div class="col s3">
+      		<h5 class="admin-user-title"><%= @user.name %></h5>
+        	<div class="border"></div>
+    	</div>
+    </div>
+
+    <%= form_for(@user,url: admin_user_path(@user)) do |f| %>
+      	<div class="row user-show-contents">
+        	<div class="user-info">
+	          	<div class="col s4 offset-s4 user-edit-image">
+	            	<%= attachment_image_tag @user, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg",class:"notification-user-image"  %>
+	            	<%= f.attachment_field :image %>
+	          	</div>
+
+				<div class="col s4 offset-s4">
+	       			<%= f.label :名前（姓）, class: "float-left" %><br>
+					<%= f.text_field :name, autofocus: true, autocomplete: "name", class: "col-auto form-control form-control-lg w-100" %>
+				</div>
+
+	            <div class="col s4 offset-s4">
+	              <%= f.label :好きなスポーツ, class: "float-left" %><br>
+	              <%= f.text_field :favorite_sports, autofocus: true, autocomplete: "name", class: " col-auto form-control form-control-lg w-100" %>
+	            </div>
+
+	            <div class="col s4 offset-s4">
+	              <%= f.label :好きなお酒, class: "float-left" %><br>
+	              <%= f.text_field :favorite_sake, autofocus: true, autocomplete: "name", class: "col-auto form-control form-control-lg w-100" %>
+	            </div>
+
+	        	<div class="col s4 offset-s4">
+	            	<%= f.label :メールアドレス %><br>
+	       			<%= f.email_field :email, autocomplete: "email", class: "col-auto form-control form-control-lg w-100" %>
+	          	</div>
+        	</div>
+      	</div>
+
+    	<div class="row end_user text-center">
+			  <div class="col s2 offset-s3"></div>
+			<%= f.submit "保存する", class: "btn btn-success mx-auto btn-lg" %>
+		</div>
+	<% end %>
+</div>

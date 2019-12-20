@@ -1,7 +1,11 @@
 class Admin::ContactsController < ApplicationController
   def show
+    if admin_signed_in?
   	@contact = Contact.find(params[:id])
   	@reply = Reply.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -17,15 +21,21 @@ class Admin::ContactsController < ApplicationController
   end
 
   def index
+    if admin_signed_in?
+      @search = Contact.includes(:user).ransack(params[:q])
+      @contacts = @search.result.page(params[:page]).per(30)
+    else
+      redirect_to root_path
+    end
   end
 
   private
-  def contact_params
-    params.require(:contact).permit(:title, :body, :user_id)
-  end
+    def contact_params
+      params.require(:contact).permit(:title, :body, :user_id)
+    end
 
-  def reply_params
-  	params.require(:reply).permit(:title, :body, :contact_id)
-  end
+    def reply_params
+  	 params.require(:reply).permit(:title, :body, :contact_id)
+    end
 
 end
