@@ -9,17 +9,33 @@
         <div class="col s2 offset-s1 friend-button">
           <%= render partial:'relationships/form_follow_button', locals: { user: @user } %>
         </div>
+        <div class="col s2 offset-s1 user-show-chat">
+          <% unless @user.id == current_user.id %>
+            <%# if @user  == @friends  %>
+              <% if @isRoom == true %>
+                <p><a href="/rooms/<%= @roomId %>"class="btn btn-success mx-auto btn-lg">チャットへ</a></p>
+              <% else %>
+                <%= form_for @room do |f| %>
+                  <%= fields_for @join do |e| %>
+                    <%= e.hidden_field :user_id, :value=> @user.id %>
+                  <% end %>
+                  <%= f.submit "チャットを始める" ,class: "btn btn-success mx-auto btn-lg"%>
+                <% end %>
+              <% end %>
+            <%# end %>
+          <% end %>
+        </div>
       </div>
 
       <div class="row user-show-contents">
         <div class="user-info">
           <div class="col s4 offset-s5">
-            <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @user, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg",class:"notification-user-image" %>
           </div>
 
 
           <div class="col s4 offset-s4">
-            <label class="float-left">名前（姓)</label>
+            <label class="float-left">ユーザー名</label>
             <input type="text" class="user-show-name col-auto form-control" value="<%= @user.name %>" readonly>
           </div>
 
@@ -32,7 +48,6 @@
             <label class="float-left">好きなお酒</label>
             <input type="text" class="user-show-name col-auto form-control" value="<%= @user.favorite_sake %>" readonly>
           </div>
-
           <% if @user == current_user %>
             <div class="col s4 offset-s4">
               <label class="control-label " for="InputText">メールアドレス</label>

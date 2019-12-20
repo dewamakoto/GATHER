@@ -45,7 +45,12 @@
         <% end %>
 
         <div class="col s3 offset-s4 login-button-bottom-space">
-                アカウントをお持ちの方は<%= link_to "こちら", new_user_session_path  %>
+          アカウントをお持ちの方は<%= link_to "こちら", new_user_session_path  %>
+        </div>
+        <div class="col s4 offset-s1">
+          <%= link_to(user_facebook_omniauth_authorize_path) do %>
+            &emsp;&emsp;&emsp;&emsp;<%= image_tag "facebook.png" %><br>Facebookアカウントでログイン
+          <% end %>
         </div>
       </div>
     </div>

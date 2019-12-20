@@ -12,40 +12,6 @@
 					<%= f.submit ' 検索する', class: "btn btn-primary" %>
 		 		<% end %>
 			</div>
-			<div class="row">
-        		<div class="col s3">
-          			<h5 class="user-title"><b>人気TOP3</b></h5>
-          			<div class="border"></div>
-        		</div>
-      		</div>
-      		<div class="row">
-      			<% @all_ranks.each do |bar| %>
-    				<div class="col s3 offset-s1">
-      					<div class="card">
-      						<div class="card-image waves-effect waves-block waves-light">
-      							<%= attachment_image_tag bar, :image, :fill, 200, 200, format: 'jpg', fallback: "no_image.jpg",class:"activator" %>
-    						</div>
-        					<div class="card-content">
-        						<span class="activator grey-text text-darken-4 bar-index-card">
-        							店名：<%= link_to(bar_path(bar)) do %>
-										<%= bar.name %>
-									<% end %><i class="material-icons right">more_vert</i>
-								</span>
-      							<p>ジャンル：<%= bar.category %></p>
-        					</div>
-        					<div class="card-reveal">
-      							<span class="card-title grey-text text-darken-4">
-      								店名：<%= link_to(bar_path(bar)) do %>
-										<%= bar.name %>
-									<% end %>
-									<i class="material-icons right">close</i>
-								</span>
-      							<p>住所：<%= bar.address %></p><br>紹介文：<%= bar.body %></p>
-    						</div>
-      					</div>
-    				</div>
-    			<% end %>
-  			</div>
   			<div class="row">
         		<div class="col s3">
           			<h5 class="user-title">お店一覧</h5>

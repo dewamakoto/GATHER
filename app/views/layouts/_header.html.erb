@@ -53,6 +53,7 @@
 	      <a href="/"class="logo"><%= image_tag "logo.png" %></a>
 	      <a href="/"class="gather">GATHER</a>
 		    <ul id="nav-mobile" class="right hide-on-med-and-down">
+		    	<li><%= link_to "About",(top_about_path) %></li>
 	      		<li><%= link_to(new_user_registration_path) do %>
 	        		<a href="/users/sign_up"class="signup"> 新規登録</a>
 	      		<% end %>

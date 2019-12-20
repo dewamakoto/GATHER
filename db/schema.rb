@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_040111) do
+ActiveRecord::Schema.define(version: 2019_12_18_063034) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -75,6 +75,23 @@ ActiveRecord::Schema.define(version: 2019_12_16_040111) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "joins", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_joins_on_room_id"
+    t.index ["user_id"], name: "index_joins_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "room_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
@@ -123,6 +140,12 @@ ActiveRecord::Schema.define(version: 2019_12_16_040111) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_comunities", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "comunity_id", null: false
@@ -150,6 +173,8 @@ ActiveRecord::Schema.define(version: 2019_12_16_040111) do
     t.datetime "deleted_at"
     t.string "favorite_sports"
     t.string "favorite_sake"
+    t.string "uid"
+    t.string "provider"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"

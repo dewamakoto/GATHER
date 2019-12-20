@@ -1,6 +1,25 @@
 class UsersController < ApplicationController
   def show
-  	@user = User.find(params[:id])
+    @user=User.find(params[:id])
+    @friends = current_user.friends
+    @currentUserJoin=Join.where(user_id: current_user.id)
+    @userJoin=Join.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserJoin.each do |cu|
+        @userJoin.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @join = Join.new
+      end
+    end
   end
 
   def edit

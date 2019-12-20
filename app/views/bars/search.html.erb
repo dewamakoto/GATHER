@@ -12,7 +12,6 @@
           			<input placeholder="住所・地名を入力"id="address" type="text"class="white-text" >
         		</div>
         		<a class="search-searchbox waves-effect waves-light btn"onclick="codeAddress()">検索</a>
-            <!-- <button onclick="getLocation()">現在地を取得</button> -->
 				<div id='map'></div>
 			</div>
 		</div>
@@ -64,8 +63,13 @@ function initMap() {
     infoWindow.open(map);
   }
 
+
+
+
+
+
   <% @bar.each do |bar| %>
-    var contentString = "店名：<a href='/bars/<%= bar.id %>'><%= bar.name %></a><br><%= bar.address %>";
+    var contentString = '<%= attachment_image_tag bar, :image, :fill, 150, 150, format: 'jpg', fallback: 'bar_no_image.png',size:'150x150'%>'+'<br>' +'店名：<%= link_to bar_path(bar.id) do %><span class=“link”><%= bar.name %></span><% end %>'+'<br>'+'<%= bar.address %>'+'<br>';
     var infowindow = new google.maps.InfoWindow({
     });
     var marker = new google.maps.Marker({
