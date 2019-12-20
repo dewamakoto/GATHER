@@ -1,2 +1,52 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<%= render 'admin/admin_menu' %>
+
+<div class="container">
+    <div class="row">
+       	<div class="col s3">
+          	<h5 class="admin-user-title">ユーザ一覧</h5>
+          	<div class="admin-border"></div>
+       	</div>
+    </div>
+    <div class="row">
+      	<%= search_form_for @search, url: admin_users_path do |f| %>
+	  		<%= f.search_field :name_or_email_cont, class:"col s4 offset-s4", placeholder: 'ユーザー名またはアドレスを入力' %>
+			<%= f.submit ' 検索する', class: "btn btn-primary" %>
+		<% end %>
+	</div>
+    <div class="row">
+    	<div class="col s10 offset-s1 bar-index-box">
+      		<% if @user_result.any? %>
+				<table class="highlight">
+					<thead class="thead-light">
+						<tr>
+							<th>ID</th>
+						 	<th>写真</th>
+					 		<th></th>
+							<th>ユーザー名</th>
+					 		<th></th>
+							<th>メールアドレス</th>
+							<th></th>
+				 		</tr>
+					</thead>
+					<% @user_result.each do |user| %>
+						<tbody>
+							<tr>
+								<td><%= user.id %></td>
+								<td><%= attachment_image_tag user, :image, :fill, 90, 90, format: 'jpg', fallback: "bar_no_image.png",class:"notification-user-image" %></td>
+				 				<td></td>
+						 		<td>
+									<div><%= user.name %></div>
+								</td>
+							 		<td></td>
+							 		<td><%= user.email %></td>
+									<td><div><%= link_to "編集する" ,edit_admin_user_path(user), class: "btn btn-success mx-auto btn-small" %></div><br><div><%= link_to "削除する" ,admin_user_path(user), method: :delete,"data-confirm" => "本当に消しますか？", class: "btn btn-success mx-auto btn-small #b71c1c red darken-4" %></div></td>
+								</tr>
+					<% end %>
+				 		</tbody>
+				</table>
+			<% else %>
+				<div>登録ユーザーはいません。</div>
+			<% end%>
+		</div>
+	</div>
+</div>

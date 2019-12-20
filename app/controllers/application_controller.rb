@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
 		def  configure_permitted_parameters
     	devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :user_address, :latitude, :longitude,:image_id,:favorite_sports,:favorite_sake])
 	end
+
+	def after_sign_in_path_for(resource_or_scope)
+		if resource_or_scope.is_a?(Admin)
+			admin_bars_path
+		else
+			search_path
+		end
+	end
 end

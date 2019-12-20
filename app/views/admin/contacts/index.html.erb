@@ -1,2 +1,51 @@
-<h1>Admin::Contacts#index</h1>
-<p>Find me in app/views/admin/contacts/index.html.erb</p>
+<%= render 'admin/admin_menu' %>
+<div class="container">
+    <div class="row">
+       	<div class="col s3">
+          	<h5 class="admin-user-title">問い合わせ一覧</h5>
+          	<div class="admin-border"></div>
+       	</div>
+    </div>
+    <div class="row">
+      	<%= search_form_for @search, url: admin_contacts_path do |f| %>
+	  		<%= f.search_field :title_or_user_name_or_user_email_cont, class:"col s4 offset-s4", placeholder: '件名・ユーザー名・アドレスを入力' %>
+			<%= f.submit ' 検索する', class: "btn btn-primary" %>
+		<% end %>
+	</div>
+    <div class="row">
+    	<div class="col s10 offset-s1 bar-index-box">
+      		<% if @contacts.any? %>
+				<table class="highlight">
+					<thead class="thead-light">
+						<tr>
+							<th>ID</th>
+						 	<th>ユーザー名</th>
+					 		<th></th>
+							<th>件名</th>
+					 		<th></th>
+							<th>メールアドレス</th>
+							<th></th>
+				 		</tr>
+					</thead>
+					<% @contacts.each do |contact| %>
+						<tbody>
+							<tr>
+								<td><%= contact.id %></td>
+								<td><%= contact.user.name %></td>
+				 				<td></td>
+						 		<td><%= contact.title %></td>
+							 	<td></td>
+							 	<td><%= contact.user.email %></td>
+								<td>
+									<div><%= link_to "返信する" ,admin_contact_path(contact), class: "btn btn-success mx-auto btn-small #ef6c00 orange darken-3" %></div>
+								</td>
+							</tr>
+					<% end %>
+				 		</tbody>
+				</table>
+			<% else %>
+				<div>問い合わせはありません。</div>
+			<% end%>
+		</div>
+	</div>
+</div>

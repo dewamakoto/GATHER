@@ -11,6 +11,48 @@ $secondary-color: color("yellow", "base") !default;
 @import 'font-awesome';
 
 
+
+// admin
+
+// user
+
+// index
+
+.admin-user-title{
+  margin-top: 100px;
+  text-align: center;
+}
+
+.admin-user-index{
+  margin-top:100px;
+  color:white;
+}
+
+.admin-border{
+  width: 80%;
+  height: 2px;
+  background-color:#dadada;
+  margin: 0 auto;
+}
+
+// bar
+
+
+// show
+
+.admin-post-title{
+  text-align: center;
+  font-size: 24px;
+}
+
+// contact
+
+//  show
+
+.admin-contact-show-title{
+  margin-bottom: 50px;
+}
+
 // ここからheader
 
 .a-notification{
