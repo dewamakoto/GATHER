@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
     get 'users/:id/exit' => 'users#exit', as: 'exit'
     root to: 'top#index'
-    resources :posts, only: [:destroy, :index, :update]
+    resources :posts, only: [:destroy,:index, :update]
     get 'posts/:id/new' => 'posts#new', as: 'new_post'
     post 'posts/:id' => 'posts#create', as: 'create_post'
     resources :comments, only: [:create, :destroy]
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:index, :create, :destroy]
     resources :users, only: [:edit, :update, :show]
     resources :messages, :only => [:create]
-    resources :rooms, :only => [:create, :show, :index]
+    resources :rooms, :only => [:create, :show]
     get '/about' => 'top#about', as: 'top_about'
     get 'bars/index/result' => 'bars#index_result', as: 'index_result'
 

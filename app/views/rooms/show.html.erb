@@ -1,7 +1,17 @@
-<p><%= "ルーム名：#{@room.name}" %></p>
+<div class="background-image-notification-index">
+	<div class="background-color-notification-index">
+		<div class="conteiner">
+			<div class="row"style="margin-bottom:0;">
+				<div class="col s6 offset-s3">
+					<div class="notification-index-box-comment">
 
-<input type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>">
-
-<div id="messages">
-  <%= render "message", collection: @messages %>
+						<div id="messages">
+						  <%= render "message", collection: @messages %>
+						</div>
+					</div>
+					<input type="text-box"placeholder="メッセージを入力"data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>"style="width:30%;margin-left:500px;height:30px;margin-bottom: 500px;">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

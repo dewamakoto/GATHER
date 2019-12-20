@@ -1,3 +1,3 @@
 <% @messages.each do |message| %>
-  <p><%= message.user.name %><br><%= message.content %></p>
+  <div><%= attachment_image_tag message.user, :image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg",size:'40x40',class:"notification-user-image" %><%= message.user.name %><br>&emsp;&emsp;&emsp;<%= message.content %></div>
 <% end %>

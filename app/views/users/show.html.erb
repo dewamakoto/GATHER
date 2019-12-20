@@ -9,6 +9,22 @@
         <div class="col s2 offset-s1 friend-button">
           <%= render partial:'relationships/form_follow_button', locals: { user: @user } %>
         </div>
+        <div class="col s2 offset-s1 user-show-chat">
+          <% unless @user.id == current_user.id %>
+            <%# if @user  == @friends  %>
+              <% if @isRoom == true %>
+                <p><a href="/rooms/<%= @roomId %>"class="btn btn-success mx-auto btn-lg">チャットへ</a></p>
+              <% else %>
+                <%= form_for @room do |f| %>
+                  <%= fields_for @join do |e| %>
+                    <%= e.hidden_field :user_id, :value=> @user.id %>
+                  <% end %>
+                  <%= f.submit "チャットを始める" ,class: "btn btn-success mx-auto btn-lg"%>
+                <% end %>
+              <% end %>
+            <%# end %>
+          <% end %>
+        </div>
       </div>
 
       <div class="row user-show-contents">
@@ -32,33 +48,6 @@
             <label class="float-left">好きなお酒</label>
             <input type="text" class="user-show-name col-auto form-control" value="<%= @user.favorite_sake %>" readonly>
           </div>
-
-          <div>
-
-
- <h1>ユーザー詳細</h1>
-
-<h2><%= @user.email %></h2>
-
-<% if @user.id == current_user.id %>
-
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @join do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<%= link_to "ユーザー一覧に戻る", root_path %>
-
-
-
           <% if @user == current_user %>
             <div class="col s4 offset-s4">
               <label class="control-label " for="InputText">メールアドレス</label>
@@ -66,7 +55,6 @@
             </div>
         </div>
       </div>
-
 
       <div class="row user-show-button">
         <div class="col s2 offset-s4">

@@ -162,6 +162,9 @@ footer {
 
 // show
 
+.user-show-chat{
+  margin-top:90px;
+}
 
 .friend-button{
   margin-top:100px;
@@ -579,6 +582,10 @@ footer {
 
 // notification
 
+.notification-none-blank{
+  margin-bottom:500px;
+}
+
 .notification-comment-border{
   width: 90%;
   height: 1px;
@@ -602,11 +609,18 @@ footer {
   background-image: url(sign_in.jpg);
   background-size: cover;
   width: 100%;
-  height: 1600px;
+  height: auto;
 }
 
 .background-color-notification-index{
   background-color: rgba( 0, 0, 0, 0.7);
   width: 100%;
-  height: 1600px;
+  height: auto;
+}
+
+
+// room
+
+.caht-message{
+  width:20%;
 }

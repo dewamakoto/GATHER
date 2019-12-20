@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
+    @friends = current_user.friends
     @currentUserJoin=Join.where(user_id: current_user.id)
     @userJoin=Join.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
       if @isRoom
       else
         @room = Room.new
-        @entry = Join.new
+        @join = Join.new
       end
     end
   end
