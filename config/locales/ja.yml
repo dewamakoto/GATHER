@@ -35,3 +35,36 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        sports: スポーツ名
+        title: 件名
+        body: 投稿内容
+        models:
+      bar: お店
+    attributes:
+      bar:
+        sports: スポーツ名
+        category: ジャンル
+        address: 住所
+        name: 店名
+        models:
+      contact: お問い合わせ
+    attributes:
+      contact:
+        title: 件名
+        body: お問い合わせ内容
+        models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        favorite_sake: 好きなお酒
+        favorite_sports: 好きなスポーツ

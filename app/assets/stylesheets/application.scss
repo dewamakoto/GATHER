@@ -133,6 +133,11 @@ footer {
 
 // about
 
+.about-registration{
+  margin-top: 50px;
+  font-size:20px;
+}
+
 .about-topik{
   color:white;
   margin-top: 100px;
@@ -141,6 +146,7 @@ footer {
 
 .about-top{
   color:white;
+  font-size: 30px;
   margin-top: 100px;
 }
 
@@ -394,6 +400,9 @@ footer {
   color:white;
 }
 
+.favorite-index{
+  margin-bottom: 500px;
+}
 
 .bar-show-favorite{
   font-size:10px;
@@ -624,6 +633,10 @@ footer {
 
 // notification
 
+.notification-index{
+  margin-bottom:500px;
+}
+
 .notification-none-blank{
   margin-bottom:500px;
 }
@@ -663,6 +676,17 @@ footer {
 
 // room
 
+.room-show-user-name{
+  font-size: 18px;
+}
+
 .caht-message{
   width:20%;
+}
+
+.room-show-box-user{
+  background-color: #EEEEEE;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 10px;
 }

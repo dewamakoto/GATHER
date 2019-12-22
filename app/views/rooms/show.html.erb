@@ -2,14 +2,26 @@
 	<div class="background-color-notification-index">
 		<div class="conteiner">
 			<div class="row"style="margin-bottom:0;">
-				<div class="col s6 offset-s3">
+				<div class="col s4 offset-s3 room-show-box-user">
+					<% @joins.each do |join| %>
+	  					<div class="col 2">
+	      					<div class="room-show-user-name">
+	        					<b><%= join.user.name %></b>さん
+	      					</div>
+	  					</div>
+					<% end %>のチャットルーム
+				</div>
+				<div class="col s8 offset-s2">
 					<div class="notification-index-box-comment">
 
 						<div id="messages">
 						  <%= render "message", collection: @messages %>
 						</div>
 					</div>
-					<input type="text-box"placeholder="メッセージを入力"data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>"style="width:30%;margin-left:500px;height:30px;margin-bottom: 500px;">
+					<div>
+						<input type="text-box"placeholder="メッセージを入力"data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>"style="border-radius:10px;width:30%;margin:30px 0 500px 500px;height:30px;margin-bottom: 500px;">
+						<button class="btn waves-effect waves-light" type="submit" name="action"style="border-radius: 10px;">送信する</button>
+					</div>
 				</div>
 			</div>
 		</div>

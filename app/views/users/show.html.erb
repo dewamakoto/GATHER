@@ -11,8 +11,8 @@
         </div>
         <div class="col s2 offset-s1 user-show-chat">
           <% unless @user.id == current_user.id %>
-            <%# if @user  == @friends  %>
-              <% if @isRoom == true %>
+            <% if @isfriend == true  %>
+              <% if @isRoom == true  %>
                 <p><a href="/rooms/<%= @roomId %>"class="btn btn-success mx-auto btn-lg">チャットへ</a></p>
               <% else %>
                 <%= form_for @room do |f| %>
@@ -22,7 +22,7 @@
                   <%= f.submit "チャットを始める" ,class: "btn btn-success mx-auto btn-lg"%>
                 <% end %>
               <% end %>
-            <%# end %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -63,9 +63,9 @@
         <div class="col s2 ">
           <%= link_to "退会する", exit_path(current_user.id), class: "btn btn-success mx-auto btsn-lg #b71c1c red darken-4" %>
         </div>
-        <% end %>
         <div class="col s2 offset-s5 user-show-post-index">
           <%= link_to "投稿一覧へ", posts_path(@user)  %>
+        <% end %>
         </div>
       </div>
     </div>
