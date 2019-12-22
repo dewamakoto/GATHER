@@ -39,6 +39,7 @@ class User < ApplicationRecord
     followings & followers
   end
 
+
   def create_notification_follow(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
@@ -69,7 +70,8 @@ class User < ApplicationRecord
     user
   end
 
-
+  validates :favorite_sake, presence: true
+  validates :favorite_sports, presence: true
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true
   devise :database_authenticatable, :registerable,

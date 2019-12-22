@@ -11,8 +11,9 @@
     	<%= form_for(@user) do |f| %>
       	<div class="row user-show-contents">
         	<div class="user-info">
+            <%= render 'layouts/error_messages', model: f.object %>
           	<div class="col s4 offset-s5 user-edit-image">
-            	<%= attachment_image_tag @user, :image, :fill, 250, 250, format: 'jpg', fallback: "no_image.jpg" %>
+            	<%= attachment_image_tag @user, :image, :fill, 150, 150, format: 'jpg', fallback: "no_image.jpg",class:"notification-user-image" %>
             	<%= f.attachment_field :image %>
           	</div>
 

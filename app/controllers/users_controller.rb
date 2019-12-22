@@ -2,6 +2,14 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @friends = current_user.friends
+    @users =User.all
+    @users.each do |user|
+    @friends.each do |friend|
+      if user.id == friend.id
+        @isfriend = true
+      end
+    end
+  end
     @currentUserJoin=Join.where(user_id: current_user.id)
     @userJoin=Join.where(user_id: @user.id)
     if @user.id == current_user.id

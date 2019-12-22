@@ -13,6 +13,7 @@
             ・以下の内容でよろしければ、「送信」ボタンを押してください。
           </div>
       		<%= form_for(@contact) do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
   					<%= f.hidden_field :user_id,:value => current_user.id %>
   					<div class="col s6 offset-s3">
         			<%= f.label :件名, class: "float-left" %><br>

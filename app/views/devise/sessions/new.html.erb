@@ -6,6 +6,7 @@
         <h2 class="col s4 offset-s4 sign_in-top">ログイン</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
           <div class="col s5 offset-s3 field emailfolder">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"white-text" %>

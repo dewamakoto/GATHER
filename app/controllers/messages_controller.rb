@@ -6,5 +6,8 @@ class MessagesController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
+    if @message.save
+    	@message.create_notification_message!(current_user, @message.id)
+    end
   end
 end

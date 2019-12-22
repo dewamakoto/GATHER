@@ -10,6 +10,9 @@ module NotificationsHelper
     	when "comment" then
     	@comment=Comment.find_by(id:notification.comment_id)&.body
     	"#{your_post}にコメントしました"
+    	when "message" then
+    	@message=Message.find_by(id:notification.message_id)&.content
+    	"あなたにメッセージを送信しました"
 	end
 	end
 

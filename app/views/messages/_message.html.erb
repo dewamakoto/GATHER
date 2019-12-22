@@ -1,3 +1,17 @@
-<div class="message">
-	<p><%= message.content %></p>
+<div class="container">
+	<div class="row">
+		<% if message.user.id != current_user.id %>
+			<div><%= attachment_image_tag message.user, :image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg",size:'40x40',class:"notification-user-image" %>
+			</div>
+			<div style="font-size:12px;margin-bottom:0;"><%= message.user.name %></div>
+			<div class="col s3 offset-s1"style="background-color: #66FF33;border-radius:10px;"><%= message.content %>
+			</div>
+		<% else %>
+			<div><%= attachment_image_tag message.user, :image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg",size:'40x40',class:"notification-user-image",style:"float:right;" %><br>
+			</div><br>
+			<div style="font-size:12px;margin-bottom:0;float:right;"><%= message.user.name %></div>
+			<div class="col s3 offset-s1"style="margin-right:30px;background-color: #66FF33;border-radius:10px;float:right;"><%= message.content %>&emsp;&emsp;
+			</div>
+		<% end %>
+	</div>
 </div>
