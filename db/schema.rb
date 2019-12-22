@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_035218) do
+ActiveRecord::Schema.define(version: 2019_12_17_101648) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2019_12_21_035218) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "bar_id", null: false
+    t.integer "bar_id"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,10 +86,10 @@ ActiveRecord::Schema.define(version: 2019_12_21_035218) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -97,11 +97,11 @@ ActiveRecord::Schema.define(version: 2019_12_21_035218) do
     t.integer "visited_id", null: false
     t.integer "post_id"
     t.integer "comment_id"
+    t.integer "message_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "message_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["message_id"], name: "index_notifications_on_message_id"
     t.index ["post_id"], name: "index_notifications_on_post_id"
@@ -124,13 +124,11 @@ ActiveRecord::Schema.define(version: 2019_12_21_035218) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+    t.bigint "user_id"
+    t.bigint "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
-    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -162,6 +160,10 @@ ActiveRecord::Schema.define(version: 2019_12_21_035218) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "favorite_sports"
+    t.string "favorite_sake"
+    t.string "uid"
+    t.string "provider"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -173,10 +175,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_035218) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.string "favorite_sports"
-    t.string "favorite_sake"
-    t.string "uid"
-    t.string "provider"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
