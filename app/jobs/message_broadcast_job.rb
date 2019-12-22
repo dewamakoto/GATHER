@@ -4,7 +4,7 @@ class MessageBroadcastJob < ApplicationJob
   def perform(message, current_user_id)
   	binding.pry
   	current_user = User.find(current_user_id)
-    ActionCable.server.broadcast 'room_channel', comment: render_message(message)
+    ActionCable.server.broadcast 'room_channel', message: render_message(message)
   end
 
   private
