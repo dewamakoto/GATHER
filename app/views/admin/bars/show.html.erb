@@ -1,86 +1,86 @@
 <%= render 'admin/admin_menu' %>
 <div class="container">
-    <div class="row">
-        <div class="col s3">
-          <h5 class="admin-user-title"><%= @bar.name %></h5>
-          <div class="border"></div>
-        </div>
-        <div class="col s4 bar-show-post-new">
-        	<%= link_to "編集する", edit_admin_bar_path(@bar), class: "btn btn-success mx-auto btsn-lg" %>
-        </div>
-        <div class="col s3 offset-s3">
-          <div class="admin-post-title">投稿一覧</div>
-        </div>
+  <div class="row">
+    <div class="col s3">
+      <h5 class="admin-user-title"><%= @bar.name %></h5>
+      <div class="border"></div>
     </div>
-    <div class="row">
-        <div class="col s5 bar-show-box">
-        	<div class="bar-show-image">
-            	<%= attachment_image_tag @bar, :image, :fill, 200, 200, format: 'jpg', fallback: "bar_no_image.png",size:'200x200' %>
-   			</div>
-    		<div>
-        		<h8><u>住所</u></h8><br>
-        		<h6><b><%= @bar.address %></b></h6>
-    		</div>
-		    <div class="bar-show-category">
-		        <h8><u>ジャンル</u></h8><br>
-		        <h6><b><%= @bar.category %></b></h6>
-		    </div>
-		    <div class="bar-show-body">
-		        <h8><u>紹介文</u></h8><br>
-		        <h6><b><%= @bar.body %></b></h6>
-		    </div>
-        </div>
+    <div class="col s4 bar-show-post-new">
+      <%= link_to "編集する", edit_admin_bar_path(@bar), class: "btn btn-success mx-auto btsn-lg" %>
+    </div>
+    <div class="col s3 offset-s3">
+      <div class="admin-post-title">投稿一覧</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s5 bar-show-box">
+      <div class="bar-show-image">
+      	<%= attachment_image_tag @bar, :image, :fill, 200, 200, format: 'jpg', fallback: "bar_no_image.png",size:'200x200' %>
+   		</div>
+    	<div>
+      	<h8><u>住所</u></h8><br>
+      	<h6><b><%= @bar.address %></b></h6>
+    	</div>
+		  <div class="bar-show-category">
+	      <h8><u>ジャンル</u></h8><br>
+		    <h6><b><%= @bar.category %></b></h6>
+		  </div>
+		  <div class="bar-show-body">
+		    <h8><u>紹介文</u></h8><br>
+		    <h6><b><%= @bar.body %></b></h6>
+		  </div>
+    </div>
 
-        <div class="col s6 offset-s1">
-        	<% if @posts.any? %>
-            	<% @posts.each do |post| %>
-            		<div class="col s12 bar-show-box-all">
-                		<div class="col s5 bar-show-user">
-                  			<u>投稿者</u>：
-                			<%= link_to(user_path(post.user)) do %>
-                    			<span><%= post.user.name %></span>
-                  			<% end %>
-                  			<div class="bar-show-post-image">
-                    			<%= attachment_image_tag post, :image, :fill, 130, 130, format: 'jpg', fallback: "bar_no_image.png" %>
-                  			</div>
-                		</div>
-                		<div class="col s7 bar-show-post-date">
-                    		<div class=" col s12 bar-show-post-destroy">
-                      			<%= link_to "削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に消しますか？",class:"col s4 offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4" %>
-                    		</div>
-                  			<u>投稿日時</u>：<%= post.created_at.strftime("%m月%d日 %H時%M分") %>
-                  			<div class="bar-show-post-title">
-                    			<u>件名</u>：<%= post.title %>
-                  			</div>
-                  			<div class="bar-show-post-title">
-                    			<u>内容</u>：<%= post.body %>
-                  			</div>
-                		</div>
-              		</div>
-              		<div class="col s11 bar-show-box-comment">
-                		<div class="bar-show-comment-index">＜<u>コメント一覧</u>＞</div>
-              		</div>
-              		<div id="post-<%= post.id %>-comment_area">
-                		<%= render  partial: 'comments/index', locals: { comments: post.comments } %>
-              		</div>
-              		<div class="blank"></div>
-              		<div class="col s8 bar-show-box-comment">
-                		<% if user_signed_in? %>
-                  			<%= render  partial:'comments/form', locals: { comment: @comment, bar: @bar, post: post  } %>
-                		<% end %>
-              		</div>
-            	<% end %>
-          	<% else %>
-            	<div class="col s12 bar-show-box-comment-none">
-              		<div><b>まだ投稿はありません</b></div>
+    <div class="col s6 offset-s1">
+      <% if @posts.any? %>
+      	<% @posts.each do |post| %>
+          <div class="col s12 bar-show-box-all">
+            <div class="col s5 bar-show-user">
+              <u>投稿者</u>：
+              <%= link_to(user_path(post.user)) do %>
+              	<span><%= post.user.name %></span>
+              <% end %>
+              <div class="bar-show-post-image">
+              	<%= attachment_image_tag post, :image, :fill, 130, 130, format: 'jpg', fallback: "bar_no_image.png" %>
             	</div>
-          	<% end %>
+            </div>
+            <div class="col s7 bar-show-post-date">
+            	<div class=" col s12 bar-show-post-destroy">
+              	<%= link_to "削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に消しますか？",class:"col s4 offset-s1 waves-effect waves-light btn-small #b71c1c red darken-4" %>
+              </div>
+              <u>投稿日時</u>：<%= post.created_at.strftime("%m月%d日 %H時%M分") %>
+              <div class="bar-show-post-title">
+                <u>件名</u>：<%= post.title %>
+              </div>
+              <div class="bar-show-post-title">
+                <u>内容</u>：<%= post.body %>
+              </div>
+            </div>
+          </div>
+        	<div class="col s11 bar-show-box-comment">
+          	<div class="bar-show-comment-index">＜<u>コメント一覧</u>＞</div>
+          </div>
+          <div id="post-<%= post.id %>-comment_area">
+          	<%= render  partial: 'comments/index', locals: { comments: post.comments } %>
+          </div>
+          <div class="blank"></div>
+          <div class="col s8 bar-show-box-comment">
+            <% if user_signed_in? %>
+            	<%= render  partial:'comments/form', locals: { comment: @comment, bar: @bar, post: post  } %>
+            <% end %>
+      		</div>
+        <% end %>
+      <% else %>
+        <div class="col s12 bar-show-box-comment-none">
+          <div><b>まだ投稿はありません</b></div>
         </div>
+      <% end %>
     </div>
-    <div class="row">
-    	<div class="col s2 offset-s8 page-change">
-        	<%= paginate @posts, class: "paginate ,#546e7a blue-grey darken-1" %>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col s2 offset-s8 page-change">
+    	<%= paginate @posts, class: "paginate ,#546e7a blue-grey darken-1" %>
     </div>
-    <div class="post-index-blank" ></div>
+  </div>
+  <div class="post-index-blank" ></div>
 </div>

@@ -32,32 +32,27 @@
 
 
 
-					<%= form_for (@reply), url:admin_contacts_path do |f| %>
-
-					<%= f.hidden_field :contact_id, :value => @contact.id %>
-
-					<div class="row">
-						<div class="col-xs-8 col-xs-offset-2">
-							<div class="reply-title-position">
-								<label class="reply-title-text">返信件名</label>
-								<div class="reply-title-box"><%= f.text_field :title, class:"reply-title-box" %>
-								</div>
-							</div>
-							<div class="reply-body-position">
-								<label class="reply-body-text">返信内容</label>
-								<div class="reply-body-box"><%= f.text_area :body, class:"reply-body-box" %>
-								</div>
-							</div>
-						</div>
-					</div>
-	</div>
-
-					<%= f.submit '送信', class:'btn btn-primary col-xs-2 col-xs-offset-5' %>
-					<% end %>
-		</div>
+		<%= form_for (@reply), url:admin_contacts_path do |f| %>
+		<%= f.hidden_field :contact_id, :value => @contact.id %>
 		<div class="row">
-			<%= link_to admin_contacts_path do %>
-			<div class="col-xs-4 col-xs-offset-4 back-to-contact-index"><問い合わせ一覧へ</div>
-			<% end %>
+			<div class="col-xs-8 col-xs-offset-2">
+				<div class="reply-title-position">
+					<label class="reply-title-text">返信件名</label>
+					<div class="reply-title-box"><%= f.text_field :title, class:"reply-title-box" %></div>
+				</div>
+				<div class="reply-body-position">
+					<label class="reply-body-text">返信内容</label>
+					<div class="reply-body-box"><%= f.text_area :body, class:"reply-body-box" %></div>
+				</div>
+			</div>
 		</div>
+	</div>
+			<%= f.submit '送信', class:'btn btn-primary col-xs-2 col-xs-offset-5' %>
+		<% end %>
+	</div>
+	<div class="row">
+		<%= link_to admin_contacts_path do %>
+			<div class="col-xs-4 col-xs-offset-4 back-to-contact-index"><問い合わせ一覧へ</div>
+		<% end %>
+	</div>
 </div>

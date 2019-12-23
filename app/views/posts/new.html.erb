@@ -1,21 +1,21 @@
 <div class="background-image-bar-new">
   <div class="background-color-bar-new">
-      <div class="container">
-        <div class="row">
-            <div class="col s3">
-                <h5 class="user-title">新規投稿</h5>
-                <div class="border"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col s3">
+          <h5 class="user-title">新規投稿</h5>
+          <div class="border"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s8 offset-s2 bar-new-box">
+          <%= form_for(@post, url: create_post_path(params[:id])) do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+            <div class="col s4 offset-s4 bar-new-image">
+              <%= attachment_image_tag @bar, :image, :fill, 300, 300, format: 'jpg', fallback: "bar_no_image.png" %>
+              <%= f.attachment_field :image %>
             </div>
-          </div>
-          <div class="row">
-            <div class="col s8 offset-s2 bar-new-box">
-              <%= form_for(@post, url: create_post_path(params[:id])) do |f| %>
-              <%= render 'layouts/error_messages', model: f.object %>
-                <div class="col s4 offset-s4 bar-new-image">
-                  <%= attachment_image_tag @bar, :image, :fill, 300, 300, format: 'jpg', fallback: "bar_no_image.png" %>
-                    <%= f.attachment_field :image %>
-                </div>
-                <div class="bar-new-name col s4 offset-s4">
+            <div class="bar-new-name col s4 offset-s4">
               <%= f.hidden_field :user_id,:value => current_user.id %>
               <%= f.hidden_field :bar_id,:value => params[:id] %>
             </div>
@@ -35,8 +35,8 @@
               <%= f.submit "投稿する", class:"col-xs-4 col-xs-offset-4 btn btn-primary" %>
             </div>
           <% end %>
-            </div>
         </div>
       </div>
     </div>
+  </div>
 </div>
