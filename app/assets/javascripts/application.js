@@ -30,16 +30,15 @@ function getLocation() {
     }
 }
 
-function showPosition(position) {
+// function showPosition(position) {
 
-$.ajax({
-  type: 'GET',
-  url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&sensor=true&key=<%= ENV['GOOGLEMAP_API_KEY'] %>&language=en`,
-}).then(function(response){
-  console.log(response);
-})
+// $.ajax({
+//   type: 'GET',
+//   url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&sensor=true&key=<%= ENV['GOOGLEMAP_API_KEY'] %>&language=en`,
+// }).then(function(response){
+// })
 
-}
+// }
 
 
 document.addEventListener('DOMContentLoaded', function() {
