@@ -44,6 +44,8 @@ class UsersController < ApplicationController
       flash[:notice] = "アカウント情報の更新に成功しました。"
       redirect_to user_path(user.id)
     else
+      @user = current_user
+      flash[:notice]="入力内容に不備があります。"
       render "edit"
     end
   end
