@@ -3,7 +3,7 @@ GATHER
 
 
 現在地付近のスポーツ観戦している飲食店を発信・探すSNSサイト<br>
-URL: https://2019gather.me
+URL: https://www.2019gather.me
 
 ## サイト概要
 
@@ -13,7 +13,7 @@ URL: https://2019gather.me
 飲食店オーナーの場合は、自分のお店をサイトに登録し、発信することによよって集客効果m望めます。
 
 ## サイトイメージ
-![トップページ画像](./images/toppage.png)
+![トップページ画像](./image/toppage.png)
 
 ## 機能
 - 飲食店検索機能（Googlemap表示）
