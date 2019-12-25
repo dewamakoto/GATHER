@@ -70,8 +70,6 @@ class User < ApplicationRecord
     user
   end
 
-  validates :favorite_sake, presence: true
-  validates :favorite_sports, presence: true
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true
   devise :database_authenticatable, :registerable,
