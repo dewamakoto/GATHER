@@ -14,8 +14,10 @@ URL: https://www.2019gather.me
 
 ## サイトイメージ
 ![トップページ画像](./image/topimage.png)
+![飲食店一覧](./image/topbar_index.png)
 
 ## 機能
+- Facebookログイン
 - 飲食店検索機能（Googlemap表示）
 - フレンド機能
 - リアルタイム個人チャット機能
