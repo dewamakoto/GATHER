@@ -10,8 +10,7 @@ class FavoritesController < ApplicationController
       end
 
 	def index
-		@favorites = Favorite.where(user_id: current_user.id)
-    	@favorites = Favorite.page(params[:page]).per(12)
+		@favorites = Favorite.where(user_id: current_user.id).page(params[:page]).per(12)
 	end
 
 	def destroy

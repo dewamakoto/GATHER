@@ -14,7 +14,7 @@ URL: https://www.2019gather.me
 
 ## サイトイメージ
 ![トップページ画像](./image/topimage.png)
-![飲食店一覧](./image/topbar_index.png)
+![飲食店一覧](./image/bar_index.png)
 
 ## 機能
 - Facebookログイン
