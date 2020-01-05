@@ -17,4 +17,5 @@ class Bar < ApplicationRecord
 	def favorited_by?(user)
     self.favorites.where(user_id: user.id).exists?
   end
+  scope :score, -> { Bar.joins(:posts).where('posts.score >= 0.6').group('bars.id').order('count(posts.bar_id) DESC') }
 end

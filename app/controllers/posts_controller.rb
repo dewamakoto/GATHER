@@ -6,7 +6,22 @@ class PostsController < ApplicationController
   def create
   	bar = Bar.find(params[:id])
   	@post = Post.new(post_params)
+    @post.score = Language.get_data(post_params[:body])
   	if @post.save
+      safes = Vision.get_image_data(@post.image_id)
+
+      aaa = []
+      safes.first["safeSearchAnnotation"].each do |safe|
+        if safe[1] == "VERY_LIKELY" || safe[1] == "LIKELY"
+          aaa.push("LIKELY")
+        end
+      end
+
+      if aaa.include?("LIKELY")
+        flash[:danger]="不適切な画像のため投稿画像は表示できません。"
+        @post.update(image_id: ENV['NOIMAGE'])
+      end
+
   		redirect_to bar_path
   	else
   		puts @post.errors.full_messages

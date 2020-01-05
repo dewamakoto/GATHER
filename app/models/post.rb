@@ -10,6 +10,7 @@ class Post < ApplicationRecord
 	validates :sports, presence: true
 	validates :title, presence: true
 	validates :body, presence: true
+  validates :image, presence: true
 
 	default_scope -> { order(created_at: :desc) }
 

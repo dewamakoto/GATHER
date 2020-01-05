@@ -27,7 +27,7 @@ class BarsController < ApplicationController
   def index
     @search = Bar.ransack(params[:q])
     @bar_result = @search.result.page(params[:bar]).per(10)
-    @all_ranks = Bar.find(Favorite.group(:bar_id).order('count(bar_id) desc').limit(3).pluck(:bar_id))
+    @all_ranks = Bar.score.limit(3)
   end
 
   def index_result

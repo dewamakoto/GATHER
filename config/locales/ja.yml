@@ -45,6 +45,7 @@ ja:
         sports: スポーツ名
         title: 件名
         body: 投稿内容
+        image: 写真
         models:
       bar: お店
     attributes:
