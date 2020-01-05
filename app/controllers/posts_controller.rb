@@ -7,6 +7,20 @@ class PostsController < ApplicationController
   	bar = Bar.find(params[:id])
   	@post = Post.new(post_params)
   	if @post.save
+      safes = Vision.get_image_data(@post.image_id)
+
+      aaa = []
+      safes.first["safeSearchAnnotation"].each do |safe|
+        if safe[1] == "VERY_LIKELY" || safe[1] == "LIKELY"
+          aaa.push("LIKELY")
+        end
+      end
+
+      if aaa.include?("LIKELY")
+        flash[:danger]="選択した画像は投稿できません。"
+        @post.update(image_id: ENV['NOIMAGE'])
+      end
+
   		redirect_to bar_path
   	else
   		puts @post.errors.full_messages

@@ -56,6 +56,11 @@
         </div>
 
         <div class="col s6 offset-s1">
+          <% if flash[:danger] %>
+            <div class="flash">
+              <%= flash[:danger] %>
+            </div>
+          <% end %>
           <% if @posts.any? %>
             <% @posts.each do |post| %>
               <div class="col s12 bar-show-box-all">

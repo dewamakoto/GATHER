@@ -51,7 +51,6 @@ function initMap() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
   } else {
-    // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
@@ -86,29 +85,11 @@ function initMap() {
   <% end %>
 }
 
-
-
-
-function markerEvent(bar) {
-  marker[bar].addListener('click', function() { // マーカーをクリックしたとき
-    closeInfoWindow();
-    infoWindow[bar].open(map, marker[bar]); // 吹き出しの表示
-    //マーカー色変更
-    changeIcon(bar);
-    //リストの色変更
-    changeCurrent(bar);
-  });
-}
-
 function codeAddress(){
-  // 入力を取得
   let inputAddress = document.getElementById('address').value;
-  // geocodingしたあとmapを移動
   geocoder.geocode( { 'address': inputAddress}, function(results,status) {
     if (status == 'OK') {
-  　　　// map.setCenterで地図が移動
       map.setCenter(results[0].geometry.location);
-  　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
       var marker = new google.maps.Marker({
         map: map,
         icon:'<%= asset_url("mapicon.png") %>',
@@ -116,7 +97,7 @@ function codeAddress(){
         position: results[0].geometry.location
       });
     } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+      alert('検索できません。他のキーワードで検索してください。');
     };
   });
 }
