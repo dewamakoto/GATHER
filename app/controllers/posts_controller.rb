@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def create
   	bar = Bar.find(params[:id])
   	@post = Post.new(post_params)
+    @post.score = Language.get_data(post_params[:body])
   	if @post.save
       safes = Vision.get_image_data(@post.image_id)
 
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
       end
 
       if aaa.include?("LIKELY")
-        flash[:danger]="選択した画像は投稿できません。"
+        flash[:danger]="不適切な画像のため投稿画像は表示できません。"
         @post.update(image_id: ENV['NOIMAGE'])
       end
 

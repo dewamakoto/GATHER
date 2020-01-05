@@ -1,7 +1,7 @@
 require 'base64'
 require 'json'
 require 'net/https'
-module Vision
+module Language
   class << self
     def get_data(text)
       api_url = "https://language.googleapis.com/v1beta1/documents:analyzeSentiment?key=#{ENV['GOOGLE_LANGUAGE_API_KEY']}"
