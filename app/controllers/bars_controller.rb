@@ -26,13 +26,13 @@ class BarsController < ApplicationController
 
   def index
     @search = Bar.ransack(params[:q])
-    @bar_result = @search.result.page(params[:bar]).per(10)
+    @bar_result = @search.result.page(params[:page]).per(10)
     @all_ranks = Bar.score.limit(3)
   end
 
   def index_result
     @search = Bar.ransack(params[:q])
-    @bar_result = @search.result.page(params[:bar]).per(10)
+    @bar_result = @search.result.page(params[:page]).per(10)
   end
 
 
