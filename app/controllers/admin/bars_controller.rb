@@ -13,8 +13,7 @@ class Admin::BarsController < ApplicationController
   def index
   	if admin_signed_in?
     	@search = Bar.ransack(params[:q])
-    	@bar_result = @search.result.page(params[:bar]).per(10)
-    	@all_ranks = Bar.find(Favorite.group(:bar_id).order('count(bar_id) desc').limit(3).pluck(:bar_id))
+    	@bar_result = @search.result.page(params[:page]).per(10)
     else
     	redirect_to root_path
     end
