@@ -1,0 +1,11 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  # 除外
+  Exclude:
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'test/**/*'
