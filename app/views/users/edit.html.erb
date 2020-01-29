@@ -7,11 +7,6 @@
         	<div class="border"></div>
     		</div>
     	</div>
-      <% if flash[:notice] %>
-        <div class="flash">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
 
     	<%= form_for(@user) do |f| %>
       	<div class="row user-show-contents">

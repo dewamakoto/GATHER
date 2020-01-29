@@ -10,14 +10,14 @@ class PostsController < ApplicationController
   	if @post.save
       safes = Vision.get_image_data(@post.image_id)
 
-      aaa = []
+      judge = []
       safes.first["safeSearchAnnotation"].each do |safe|
         if safe[1] == "VERY_LIKELY" || safe[1] == "LIKELY"
-          aaa.push("LIKELY")
+          judge.push("LIKELY")
         end
       end
 
-      if aaa.include?("LIKELY")
+      if judge.include?("LIKELY")
         flash[:danger]="不適切な画像のため投稿画像は表示できません。"
         @post.update(image_id: ENV['NOIMAGE'])
       end
