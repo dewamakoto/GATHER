@@ -5,6 +5,13 @@ GATHER
 現在地付近のスポーツ観戦している飲食店を発信・探すSNSサイト<br>
 URL: https://www.2019gather.me
 
+## 使用技術
+- Ruby 2.5.7, Rails 5.2.3
+- Nginx, Puma
+- AWS(EC2, RDS,Route53, ALB, ACM)
+- Vagrant, Virtual Box
+- SASS, Material　Design, JQuery
+
 ## サイト概要
 
 他の人と一緒に食べたり飲んでりしながらスポーツ観戦をしたい時、<br>
